@@ -1,62 +1,105 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const menuToggle = document.getElementById('mobile-menu');
-    const navMenu = document.getElementById('nav-menu');
-    const navLinks = navMenu.querySelectorAll('a[href^="#"]'); // Ищем ссылки внутри меню
+/* 
+ * ==========================================================================
+ * JAVASCRIPT ДЛЯ САЙТА AlR1_Beats
+ * Файл: js/Site.js
+ * Назначение: Работа мобильного меню (открытие/закрытие)
+ * ==========================================================================
+ */
 
-    // Функция для открытия/закрытия меню
-    function toggleMenu() {
-        navMenu.classList.toggle('active');
-        menuToggle.classList.toggle('is-active');
-    }
+/* --------------------------------------------------------------------------
+   1. ПОИСК ЭЛЕМЕНТОВ НА СТРАНИЦЕ
+   -------------------------------------------------------------------------- */
 
-    // Функция для закрытия меню
-    function closeMenu() {
+// Находим кнопку бургера по её id="mobile-menu"
+// const - объявление переменной (значение можно читать, нельзя менять)
+const menuToggle = document.getElementById('mobile-menu');
+
+// Находим навигационное меню по его id="nav-menu"
+const navMenu = document.getElementById('nav-menu');
+
+
+/* --------------------------------------------------------------------------
+   2. ОБРАБОТЧИК КЛИКА НА БУРГЕР
+   -------------------------------------------------------------------------- */
+
+// Вешаем обработчик события "клик" на кнопку бургера
+// addEventListener - метод для добавления обработчика
+menuToggle.addEventListener('click', function() {
+    
+    // toggle - переключает класс: добавляет, если нет; удаляет, если есть
+    // active - класс, который показывает меню
+    navMenu.classList.toggle('active');
+    
+    // Переключаем класс is-active для анимации бургера (превращение в крестик)
+    menuToggle.classList.toggle('is-active');
+    
+});
+
+
+/* --------------------------------------------------------------------------
+   3. ОБРАБОТЧИК КЛИКА НА ССЫЛКИ В МЕНЮ
+   -------------------------------------------------------------------------- */
+
+// Находим все ссылки внутри меню
+// querySelectorAll - возвращает коллекцию всех найденных элементов
+// 'a' - селектор тега (ищем все <a>)
+const navLinks = navMenu.querySelectorAll('a');
+
+// Перебираем каждую ссылку в коллекции
+// forEach - метод перебора массива/коллекции
+navLinks.forEach(function(link) {
+    
+    // Вешаем обработчик клика на каждую ссылку
+    link.addEventListener('click', function() {
+        
+        // При клике на ссылку - закрываем меню
+        // remove - удаляет класс
         navMenu.classList.remove('active');
         menuToggle.classList.remove('is-active');
-    }
-
-    // Обработчик клика на кнопку меню
-    menuToggle.addEventListener('click', toggleMenu);
-
-    // Обработчик клика по ссылкам внутри меню
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            // Если клик произошел, когда меню уже открыто, закрываем его
-            if (navMenu.classList.contains('active')) {
-                closeMenu();
-                // Проверка, чтобы избежать двойного скролла, если ссылка ведет к текущей секции
-                const href = this.getAttribute('href');
-                if (href.startsWith('#') && document.querySelector(href)) {
-                    e.preventDefault(); // Предотвращаем стандартное поведение, если есть якорь
-                }
-            }
-        });
+        
     });
-
-    // Закрытие меню при клике вне его области
-    document.addEventListener('click', function(e) {
-        // Проверяем, кликнули ли мы вне меню и вне кнопки-переключателя
-        if (!navMenu.contains(e.target) && !menuToggle.contains(e.target) && navMenu.classList.contains('active')) {
-            closeMenu();
-        }
-    });
-
-    // Плавный скролл к секциям
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            const href = this.getAttribute('href');
-            // Проверяем, является ли ссылка якорем и существует ли соответствующий элемент
-            if (href.startsWith('#') && document.querySelector(href)) {
-                e.preventDefault(); // Предотвращаем переход по ссылке без JS
-                const targetElement = document.querySelector(href);
-                targetElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start' // Прокручиваем к началу элемента
-                });
-
-                // Если мы открыли меню, чтобы нажать на ссылку, нужно его закрыть после скролла */
-                // Эта логика уже встроена в обработчик click для navLinks
-            }
-        });
-    });
+    
 });
+
+
+/* --------------------------------------------------------------------------
+   4. ЗАКРЫТИЕ МЕНЮ ПРИ КЛИКЕ ВНЕ ЕГО ОБЛАСТИ
+   -------------------------------------------------------------------------- */
+
+// Вешаем обработчик клика на весь документ (страницу)
+document.addEventListener('click', function(e) {
+    
+    // Проверяем условие: клик был НЕ по меню И НЕ по кнопке бургера
+    // ! - логическое "НЕ" (отрицание)
+    // contains - проверяет, содержит ли элемент другой элемент
+    // e.target - элемент, по которому кликнули
+    if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+        
+        // Если клик вне - закрываем меню
+        navMenu.classList.remove('active');
+        menuToggle.classList.remove('is-active');
+        
+    }
+    
+});
+
+
+/* --------------------------------------------------------------------------
+   КАК ЭТО РАБОТАЕТ (ПОШАГОВО):
+   --------------------------------------------------------------------------
+   
+   1. Пользователь кликает на бургер (☰)
+      → menuToggle.addEventListener срабатывает
+      → navMenu получает класс 'active' → меню показывается
+      → menuToggle получает класс 'is-active' → бургер становится крестиком
+   
+   2. Пользователь кликает на ссылку в меню
+      → navLinks.forEach обрабатывает клик
+      → Классы 'active' и 'is-active' удаляются → меню закрывается
+   
+   3. Пользователь кликает в пустое место (вне меню)
+      → document.addEventListener проверяет условие
+      → Если клик не по меню и не по бургеру → меню закрывается
+   
+   --------------------------------------------------------------------------
+*/

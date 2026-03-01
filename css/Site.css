@@ -1,468 +1,533 @@
-/* Общие стили и переменные */
-:root {
-    --primary-color: #007bff; /* Синий */
-    --secondary-color: #6f42c1; /* Фиолетовый */
-    --dark-color: #343a40; /* Темно-серый */
-    --light-color: #f8f9fa; /* Светло-серый */
-    --text-color: #333;
-    --white: #fff;
-    --font-primary: 'Montserrat', sans-serif;
-    --font-secondary: 'Open Sans', sans-serif;
+/* 
+ * ==========================================================================
+ * СТИЛИ САЙТА AlR1_Beats
+ * Файл: css/Site.css
+ * Назначение: Внешний вид всех страниц сайта
+ * ==========================================================================
+ */
+
+/* --------------------------------------------------------------------------
+   1. СБРОС СТИЛЕЙ И БАЗОВЫЕ НАСТРОЙКИ
+   -------------------------------------------------------------------------- */
+
+/* Сброс отступов у всех элементов */
+* {
+    margin: 0;           /* Убираем внешние отступы */
+    padding: 0;          /* Убираем внутренние отступы */
+    box-sizing: border-box;  /* Ширина = контент + padding + border */
 }
 
+/* Стили для body - основной контейнер страницы */
 body {
-    font-family: var(--font-secondary);
-    margin: 0;
-    padding: 0;
-    background-color: var(--light-color);
-    color: var(--text-color);
-    line-height: 1.7;
-    scroll-behavior: smooth; /* Плавный скролл */
+    font-family: Arial, sans-serif;  /* Шрифт без засечек */
+    line-height: 1.6;    /* Межстрочный интервал (высота строки) */
+    background-color: #f5f5f5;  /* Светло-серый фон страницы */
+    color: #333;         /* Тёмно-серый цвет текста */
 }
 
+
+/* --------------------------------------------------------------------------
+   2. КОНТЕЙНЕР
+   -------------------------------------------------------------------------- */
+
+/* Ограничивает ширину контента и центрирует его на странице */
 .container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px;
+    max-width: 1100px;   /* Максимальная ширина контейнера */
+    margin: 0 auto;      /* Центрирование: 0 сверху/снизу, auto слева/справа */
+    padding: 0 20px;     /* Внутренние отступы по краям */
 }
 
+
+/* --------------------------------------------------------------------------
+   3. ЗАГОЛОВКИ
+   -------------------------------------------------------------------------- */
+
+/* Общие стили для всех заголовков */
 h1, h2, h3 {
-    font-family: var(--font-primary);
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    line-height: 1.3;
+    margin-bottom: 20px; /* Отступ снизу */
+    color: #1a1a2e;      /* Тёмно-синий цвет */
 }
 
-h1 { font-size: 3.5rem; }
-h2 { font-size: 2.5rem; }
-h3 { font-size: 1.75rem; }
+/* Размер шрифта для заголовка 1 уровня (самый важный) */
+h1 { font-size: 48px; }
 
-p {
-    margin-bottom: 1.5rem;
-}
+/* Размер шрифта для заголовка 2 уровня */
+h2 { font-size: 36px; }
 
+/* Размер шрифта для заголовка 3 уровня */
+h3 { font-size: 24px; }
+
+
+/* --------------------------------------------------------------------------
+   4. ССЫЛКИ
+   -------------------------------------------------------------------------- */
+
+/* Базовые стили ссылок */
 a {
-    color: var(--primary-color);
-    text-decoration: none;
+    color: #4361ee;      /* Ярко-синий цвет */
+    text-decoration: none;  /* Убираем подчёркивание */
 }
 
+/* Стили при наведении курсора */
 a:hover {
-    color: var(--secondary-color);
+    color: #3a0ca3;      /* Фиолетовый цвет при наведении */
 }
 
+
+/* --------------------------------------------------------------------------
+   5. КНОПКИ
+   -------------------------------------------------------------------------- */
+
+/* Общие стили для всех кнопок */
 .btn {
-    display: inline-block;
-    padding: 12px 30px;
-    border-radius: 30px; /* Скругленные края */
-    font-family: var(--font-primary);
-    font-weight: 700;
-    font-size: 1.1rem;
-    text-align: center;
-    transition: all 0.3s ease-in-out;
-    cursor: pointer;
-    border: none;
+    display: inline-block;  /* Строчно-блочный элемент */
+    padding: 12px 30px;     /* Отступы: 12px сверху/снизу, 30px слева/справа */
+    border-radius: 25px;    /* Закруглённые края (радиус 25px) */
+    font-weight: bold;      /* Жирный шрифт */
+    border: none;           /* Убираем рамку */
+    cursor: pointer;        /* Курсор-рука при наведении */
+    transition: 0.3s;       /* Плавное изменение цвета (0.3 секунды) */
 }
 
+/* Синяя кнопка (основная) */
 .btn-primary {
-    background-color: var(--primary-color);
-    color: var(--white);
-    border: 2px solid var(--primary-color);
+    background-color: #4361ee;  /* Ярко-синий фон */
+    color: #fff;                /* Белый текст */
 }
 
+/* Синяя кнопка при наведении */
 .btn-primary:hover {
-    background-color: var(--white);
-    color: var(--primary-color);
-    border-color: var(--primary-color);
+    background-color: #3a0ca3;  /* Темнеет при наведении */
 }
 
+/* Фиолетовая кнопка (вторичная) */
 .btn-secondary {
-    background-color: var(--secondary-color);
-    color: var(--white);
-    border: 2px solid var(--secondary-color);
+    background-color: #7209b7;  /* Фиолетовый фон */
+    color: #fff;                /* Белый текст */
 }
 
+/* Фиолетовая кнопка при наведении */
 .btn-secondary:hover {
-    background-color: var(--white);
-    color: var(--secondary-color);
-    border-color: var(--secondary-color);
+    background-color: #560bad;  /* Темнеет при наведении */
 }
 
-/* Header */
+
+/* --------------------------------------------------------------------------
+   6. ШАПКА САЙТА (HEADER)
+   -------------------------------------------------------------------------- */
+
+/* Контейнер шапки */
 .main-header {
-    background-color: rgba(52, 58, 64, 0.9); /* Полупрозрачный темно-серый */
-    color: var(--white);
-    padding: 1rem 0;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(5px); /* Размытие фона */
+    background-color: #1a1a2e;  /* Тёмно-синий фон */
+    color: #fff;                /* Белый текст */
+    padding: 15px 0;            /* Отступы: 15px сверху/снизу, 0 слева/справа */
+    position: fixed;            /* Фиксированная позиция (остаётся при прокрутке) */
+    width: 100%;                /* Ширина на весь экран */
+    top: 0;                     /* Прижата к верху */
+    z-index: 1000;              /* Поверх всех элементов (слой) */
 }
 
+/* Контейнер внутри шапки */
 .main-header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: flex;              /* Flex-контейнер (элементы в ряд) */
+    justify-content: space-between;  /* Разносим элементы по краям */
+    align-items: center;        /* Центрируем по вертикали */
 }
 
+/* Логотип */
 .logo {
-    font-family: var(--font-primary);
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--white);
-    letter-spacing: 1px;
+    font-size: 24px;            /* Размер шрифта */
+    font-weight: bold;          /* Жирный */
+    color: #fff;                /* Белый цвет */
 }
 
-/* Меню-бургер */
+
+/* --------------------------------------------------------------------------
+   7. МЕНЮ-БУРГЕР (ДЛЯ МОБИЛЬНЫХ)
+   -------------------------------------------------------------------------- */
+
+/* Кнопка бургера */
 .menu-toggle {
-    display: block;
-    cursor: pointer;
-    padding: 10px;
-    z-index: 1050; /* Поверх всего */
+    display: block;             /* Блочный элемент */
+    cursor: pointer;            /* Курсор-рука */
 }
 
+/* Полоски бургера (3 штуки) */
 .bar {
-    display: block;
-    width: 25px;
-    height: 3px;
-    margin: 5px auto;
-    background-color: var(--white);
-    transition: all 0.3s ease-in-out;
+    display: block;             /* Блочный элемент */
+    width: 25px;                /* Ширина полоски */
+    height: 3px;                /* Высота полоски */
+    margin: 5px auto;           /* Отступы: 5px сверху/снизу, авто по бокам (центровка) */
+    background-color: #fff;     /* Белый цвет */
+    transition: 0.3s;           /* Плавная анимация */
 }
 
-/* Навигационное меню */
-.nav-menu {
-    display: none; /* Скрываем по умолчанию */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.95); /* Темный фон */
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transform: translateX(-100%);
-    transition: transform 0.5s ease-in-out;
-    z-index: 1020; /* Ниже бургера, но поверх контента */
-}
+/* Анимация: превращение бургера в крестик */
 
-.nav-menu.active {
-    display: flex; /* Показываем, как flex-контейнер */
-    transform: translateX(0);
-}
-
-.nav-menu ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    text-align: center;
-}
-
-.nav-menu li {
-    margin: 20px 0;
-}
-
-.nav-menu a {
-    color: var(--white);
-    font-family: var(--font-primary);
-    font-size: 1.8rem;
-    font-weight: 700;
-    padding: 15px 30px;
-    display: block;
-    transition: color 0.3s ease;
-}
-
-.nav-menu a:hover {
-    color: var(--primary-color);
-}
-
-/* Анимация бургера в крестик */
+/* Первая полоска - поворот вниз на 45 градусов */
 .menu-toggle.is-active .bar:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
 }
+
+/* Вторая полоска - исчезает */
 .menu-toggle.is-active .bar:nth-child(2) {
-    opacity: 0;
+    opacity: 0;                 /* Прозрачность 0% */
 }
+
+/* Третья полоска - поворот вверх на 45 градусов */
 .menu-toggle.is-active .bar:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
 }
 
-/* Основное содержимое */
+
+/* --------------------------------------------------------------------------
+   8. НАВИГАЦИОННОЕ МЕНЮ
+   -------------------------------------------------------------------------- */
+
+/* Контейнер меню */
+.nav-menu {
+    display: none;              /* Скрыто по умолчанию (показывается на мобильных) */
+    position: fixed;            /* Фиксированная позиция */
+    top: 0;                     /* Прижато к верху */
+    left: 0;                    /* Прижато к левому краю */
+    width: 100%;                /* Ширина на весь экран */
+    height: 100vh;              /* Высота на 100% от высоты экрана */
+    background-color: rgba(26, 26, 46, 0.95);  /* Полупрозрачный тёмный фон */
+    flex-direction: column;     /* Элементы в колонку */
+    justify-content: center;    /* Центрируем по вертикали */
+    align-items: center;        /* Центрируем по горизонтали */
+    z-index: 999;               /* Слой под шапкой */
+}
+
+/* Показываем меню при добавлении класса active */
+.nav-menu.active {
+    display: flex;              /* Включаем flex-режим */
+}
+
+/* Список ссылок */
+.nav-menu ul {
+    list-style: none;           /* Убираем маркеры списка */
+    text-align: center;         /* Центрируем текст */
+}
+
+/* Элемент списка */
+.nav-menu li {
+    margin: 20px 0;             /* Отступ сверху и снизу */
+}
+
+/* Ссылки в меню */
+.nav-menu a {
+    color: #fff;                /* Белый цвет */
+    font-size: 24px;            /* Крупный шрифт */
+    font-weight: bold;          /* Жирный */
+}
+
+/* Ссылки при наведении */
+.nav-menu a:hover {
+    color: #4361ee;             /* Ярко-синий цвет */
+}
+
+
+/* --------------------------------------------------------------------------
+   9. ОСНОВНОЙ КОНТЕНТ
+   -------------------------------------------------------------------------- */
+
+/* Отступ для основного контента (чтобы не заезжал под шапку) */
 main {
-    padding-top: 100px; /* Отступ сверху, чтобы контент не залезал под header */
+    padding-top: 80px;          /* Отступ сверху */
 }
 
+/* Секции страницы */
 section {
-    padding: 80px 0;
+    padding: 60px 0;            /* Отступы: 60px сверху/снизу, 0 по бокам */
 }
 
+
+/* --------------------------------------------------------------------------
+   10. ГЛАВНЫЙ ЭКРАН (HERO SECTION)
+   -------------------------------------------------------------------------- */
+
+/* Баннер на главной странице */
 .hero-section {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1511376777868-6eb5346d24c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
-    color: var(--white);
-    text-align: center;
-    min-height: 70vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: inset 0 0 100px rgba(0,0,0,0.5); /* Внутренняя тень для глубины */
+    background-color: #4361ee;  /* Ярко-синий фон */
+    color: #fff;                /* Белый текст */
+    text-align: center;         /* Центрируем текст */
+    min-height: 80vh;           /* Минимальная высота - 80% экрана */
+    display: flex;              /* Flex-контейнер */
+    align-items: center;        /* Центрируем по вертикали */
+    justify-content: center;    /* Центрируем по горизонтали */
 }
 
-.hero-content {
-    max-width: 700px;
-}
-
+/* Заголовок внутри hero-секции */
 .hero-content h1 {
-    font-size: 4rem;
-    margin-bottom: 1.5rem;
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+    color: #fff;                /* Белый цвет (переопределяем стандартный) */
 }
 
+/* Текст внутри hero-секции */
 .hero-content p {
-    font-size: 1.4rem;
-    margin-bottom: 2.5rem;
-    text-shadow: 1px 1px 5px rgba(0,0,0,0.4);
+    font-size: 20px;            /* Увеличенный шрифт */
+    margin-bottom: 30px;        /* Отступ снизу */
 }
 
+
+/* --------------------------------------------------------------------------
+   11. СЕКЦИЯ "О НАС"
+   -------------------------------------------------------------------------- */
+
+/* Фон секции */
 .about-section {
-    background-color: var(--white);
+    background-color: #fff;     /* Белый фон */
 }
 
-.about-section h2 {
-    text-align: center;
-    color: var(--dark-color);
-}
-
+/* Сетка статистики */
 .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
-    text-align: center;
+    display: flex;              /* Flex-контейнер */
+    flex-wrap: wrap;            /* Перенос элементов на новую строку */
+    justify-content: center;    /* Центрируем элементы */
+    gap: 40px;                  /* Расстояние между элементами */
+    margin-top: 40px;           /* Отступ сверху */
 }
 
+/* Карточка статистики */
+.stat-item {
+    text-align: center;         /* Центрируем текст */
+    min-width: 200px;           /* Минимальная ширина */
+}
+
+/* Цифры статистики */
 .stat-item h3 {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
-    color: var(--primary-color);
+    font-size: 48px;            /* Крупный шрифт */
+    color: #4361ee;             /* Ярко-синий цвет */
+    margin-bottom: 10px;        /* Отступ снизу */
 }
 
-.stat-item p {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--dark-color);
-    margin-bottom: 0;
-}
 
+/* --------------------------------------------------------------------------
+   12. СЕКЦИЯ "УСЛУГИ"
+   -------------------------------------------------------------------------- */
+
+/* Фон секции */
 .services-section {
-    background-color: var(--light-color);
+    background-color: #f0f0f5;  /* Светло-серый фон */
 }
 
+/* Заголовок секции */
 .services-section h2 {
-    text-align: center;
-    color: var(--dark-color);
+    text-align: center;         /* Центрируем */
 }
 
+/* Сетка карточек услуг */
 .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
+    display: flex;              /* Flex-контейнер */
+    flex-wrap: wrap;            /* Перенос элементов */
+    justify-content: center;    /* Центрируем */
+    gap: 30px;                  /* Расстояние между карточками */
+    margin-top: 40px;           /* Отступ сверху */
 }
 
+/* Карточка услуги */
 .service-card {
-    background-color: var(--white);
-    padding: 30px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fff;     /* Белый фон */
+    padding: 30px;              /* Внутренние отступы */
+    border-radius: 10px;        /* Закруглённые углы */
+    text-align: center;         /* Центрируем текст */
+    flex: 1;                    /* Растягивание */
+    min-width: 250px;           /* Минимальная ширина */
+    max-width: 300px;           /* Максимальная ширина */
 }
 
-.service-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
-}
-
-.service-card .icon {
-    margin-bottom: 20px;
-}
-
-.service-card .icon img {
-    width: 50px;
-    height: 50px;
-    opacity: 0.8;
-}
-
+/* Заголовок карточки */
 .service-card h3 {
-    color: var(--secondary-color);
-    margin-bottom: 15px;
+    color: #7209b7;             /* Фиолетовый цвет */
 }
 
+
+/* --------------------------------------------------------------------------
+   13. СЕКЦИИ "ВЫПУСК" И "ПРОФИЛЬ"
+   -------------------------------------------------------------------------- */
+
+/* Общие стили для секций выпуска и профиля */
 .release-section,
 .profile-section {
-    background: linear-gradient(rgba(0, 123, 255, 0.8), rgba(111, 66, 193, 0.8)), url('https://images.unsplash.com/photo-1505761671935-60b3a7427bad?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
-    color: var(--white);
-    text-align: center;
-    box-shadow: inset 0 0 100px rgba(0,0,0,0.5);
+    background-color: #7209b7;  /* Фиолетовый фон */
+    color: #fff;                /* Белый текст */
+    text-align: center;         /* Центрируем текст */
 }
 
+/* Заголовки в этих секциях */
 .release-section h2,
 .profile-section h2 {
-    color: var(--white);
-    font-size: 3rem;
+    color: #fff;                /* Белый цвет (переопределяем) */
 }
 
-.release-section p,
-.profile-section p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-}
 
+/* --------------------------------------------------------------------------
+   14. СЕКЦИЯ "ВХОД/РЕГИСТРАЦИЯ"
+   -------------------------------------------------------------------------- */
+
+/* Фон секции */
 .login-section {
-    background-color: var(--white);
+    background-color: #fff;     /* Белый фон */
 }
 
+/* Заголовок секции */
 .login-section h2 {
-    text-align: center;
-    color: var(--dark-color);
+    text-align: center;         /* Центрируем */
 }
 
+/* Обёртка формы */
 .form-wrapper {
-    max-width: 500px;
-    margin: 40px auto;
-    padding: 40px;
-    background-color: var(--light-color);
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    max-width: 500px;           /* Максимальная ширина */
+    margin: 40px auto;          /* Центрируем: 40px сверху/снизу, авто по бокам */
+    padding: 30px;              /* Внутренние отступы */
+    background-color: #f5f5f5;  /* Светло-серый фон */
+    border-radius: 10px;        /* Закруглённые углы */
 }
 
+/* Заголовок внутри формы */
+.form-wrapper h3 {
+    text-align: center;         /* Центрируем */
+    margin-bottom: 20px;        /* Отступ снизу */
+}
+
+/* Группа полей формы */
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 20px;        /* Отступ снизу между полями */
 }
 
+/* Подпись к полю */
 .form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 700;
-    font-family: var(--font-primary);
-    color: var(--dark-color);
+    display: block;             /* Блочный элемент (на отдельной строке) */
+    margin-bottom: 8px;         /* Отступ снизу */
+    font-weight: bold;          /* Жирный шрифт */
 }
 
+/* Поле ввода */
 .form-group input {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 1rem;
-    box-sizing: border-box; /* Важно для правильного расчета ширины */
-    transition: border-color 0.3s ease;
+    width: 100%;                /* Ширина на весь контейнер */
+    padding: 12px;              /* Внутренние отступы */
+    border: 1px solid #ccc;     /* Рамка: 1px, сплошная, светло-серая */
+    border-radius: 5px;         /* Закруглённые углы */
+    font-size: 16px;            /* Размер шрифта */
 }
 
+/* Поле в фокусе (когда кликнули) */
 .form-group input:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+    outline: none;              /* Убираем стандартную обводку */
+    border-color: #4361ee;      /* Синяя рамка */
 }
 
-.form-wrapper button.btn {
-    width: 100%;
-    margin-top: 20px;
+/* Кнопка внутри формы */
+.form-wrapper .btn {
+    width: 100%;                /* Ширина на весь контейнер */
 }
 
+/* Ссылка на регистрацию */
 .signup-link {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 1.05rem;
+    text-align: center;         /* Центрируем */
+    margin-top: 20px;           /* Отступ сверху */
 }
 
+
+/* --------------------------------------------------------------------------
+   15. СЕКЦИЯ "КОНТАКТЫ"
+   -------------------------------------------------------------------------- */
+
+/* Фон секции */
 .contact-section {
-    background-color: var(--dark-color);
-    color: var(--white);
-    text-align: center;
+    background-color: #1a1a2e;  /* Тёмно-синий фон */
+    color: #fff;                /* Белый текст */
+    text-align: center;         /* Центрируем текст */
 }
 
+/* Заголовок секции */
 .contact-section h2 {
-    color: var(--white);
+    color: #fff;                /* Белый цвет */
 }
 
+/* Ссылки в контактах */
 .contact-section a {
-    color: var(--primary-color);
+    color: #4361ee;             /* Ярко-синий */
 }
 
+/* Ссылки при наведении */
 .contact-section a:hover {
-    color: var(--white);
+    color: #fff;                /* Белый цвет */
 }
 
+/* Блок адреса (контакты) */
+address {
+    font-style: normal;         /* Убираем курсив (стандартный для address) */
+}
+
+/* Параграфы внутри address */
 address p {
-    margin-bottom: 10px;
+    margin: 10px 0;             /* Отступ сверху и снизу */
 }
 
+
+/* --------------------------------------------------------------------------
+   16. ПОДВАЛ САЙТА (FOOTER)
+   -------------------------------------------------------------------------- */
+
+/* Подвал */
 .main-footer {
-    background-color: #212529; /* Очень темный */
-    color: #ccc;
-    text-align: center;
-    padding: 2rem 0;
-    margin-top: 2rem; /* Добавим отступ */
+    background-color: #0f0f1a;  /* Очень тёмный фон */
+    color: #aaa;                /* Светло-серый текст */
+    text-align: center;         /* Центрируем текст */
+    padding: 20px 0;            /* Отступы: 20px сверху/снизу */
 }
 
-/* Медиа-запросы для адаптивности */
-@media (max-width: 992px) {
-    h1 { font-size: 3rem; }
-    h2 { font-size: 2rem; }
-    .hero-content h1 { font-size: 3rem; }
-    .hero-content p { font-size: 1.2rem; }
-    .nav-menu a { font-size: 1.5rem; }
-}
 
+/* --------------------------------------------------------------------------
+   17. АДАПТИВНОСТЬ (МЕДИА-ЗАПРОСЫ ДЛЯ МОБИЛЬНЫХ)
+   -------------------------------------------------------------------------- */
+
+/* Для экранов шириной 768px и меньше (планшеты) */
 @media (max-width: 768px) {
-    .header .container {
-        flex-wrap: wrap; /* Разрешаем перенос, если нужно */
-    }
-    .logo {
-        margin-bottom: 10px;
-    }
-    .menu-toggle {
-        margin-left: auto; /* Сдвигаем бургер вправо */
-    }
-    main {
-        padding-top: 80px; /* Уменьшаем отступ */
-    }
-    section {
-        padding: 60px 0;
-    }
-    .hero-section {
-        min-height: 50vh;
-    }
-    .hero-content h1 {
-        font-size: 2.5rem;
-    }
-    .hero-content p {
-        font-size: 1.1rem;
-    }
-    .stats-grid, .services-grid {
-        grid-template-columns: 1fr; /* На телефонах все в колонку */
-    }
+    
+    /* Уменьшаем заголовки */
+    h1 { font-size: 36px; }
+    h2 { font-size: 28px; }
+    
+    /* Уменьшаем заголовок hero-секции */
+    .hero-content h1 { font-size: 32px; }
+    .hero-content p { font-size: 18px; }
+    
+    /* Уменьшаем шрифт в меню */
+    .nav-menu a { font-size: 20px; }
+    
+    /* Уменьшаем отступы */
+    main { padding-top: 70px; }
+    section { padding: 40px 0; }
+    
 }
 
+/* Для экранов шириной 576px и меньше (телефоны) */
 @media (max-width: 576px) {
-    .container {
-        padding: 0 15px;
-    }
+    
+    /* Уменьшаем отступы контейнера */
+    .container { padding: 0 15px; }
+    
+    /* Уменьшаем кнопки */
     .btn {
-        padding: 10px 25px;
-        font-size: 1rem;
+        padding: 10px 20px;
+        font-size: 14px;
     }
-    .form-wrapper {
-        padding: 30px 20px;
+    
+    /* Уменьшаем форму */
+    .form-wrapper { padding: 20px; }
+    
+    /* Элементы в колонку */
+    .stats-grid,
+    .services-grid {
+        flex-direction: column;   /* Вертикальное расположение */
+        align-items: center;      /* Центрируем */
     }
-    .menu-toggle .bar {
-        width: 20px;
-        height: 2.5px;
+    
+    /* Карточка на всю ширину */
+    .service-card {
+        max-width: 100%;
     }
-    .menu-toggle.is-active .bar:nth-child(1) { transform: translateY(6px) rotate(45deg); }
-    .menu-toggle.is-active .bar:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
-
+    
 }

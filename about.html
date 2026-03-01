@@ -1,23 +1,35 @@
+<!-- 
+    ========================================================================
+    СТРАНИЦА "О НАС" сайта AlR1_Beats
+    Файл: about.html
+    Назначение: Информация о компании и статистика
+    ========================================================================
+-->
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>О нас - AlR1_Beats</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/Site.css">
 </head>
+
 <body>
+
+    <!-- ==================== ШАПКА САЙТА ==================== -->
     <header class="main-header">
         <div class="container">
             <div class="logo">AlR1_Beats</div>
+            
+            <!-- Кнопка бургера для мобильного меню -->
             <div class="menu-toggle" id="mobile-menu">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
             </div>
+            
+            <!-- Навигационное меню -->
             <nav class="nav-menu" id="nav-menu">
                 <ul>
                     <li><a href="Site.html">Главная</a></li>
@@ -31,36 +43,60 @@
             </nav>
         </div>
     </header>
+    <!-- ==================== КОНЕЦ ШАПКИ ==================== -->
 
+
+    <!-- ==================== ОСНОВНОЕ СОДЕРЖИМОЕ ==================== -->
     <main>
-        <section id="about" class="about-section page-section">
+        <!-- Секция "О нас" -->
+        <section class="about-section">
             <div class="container">
+                <!-- Заголовок 2 уровня -->
                 <h2>Кто Мы?</h2>
-                <p>AlR1_Beats — это современная платформа дистрибуции музыки. Мы понимаем ваши потребности и стремимся предоставить лучший сервис для продвижения вашего творчества на всех ведущих платформах мира, таких как Spotify, Apple Music, VK Музыка, Яндекс.Музыка и многих других.</p>
+                
+                <!-- Описание компании -->
+                <p>AlR1_Beats — это современная платформа дистрибуции музыки. 
+                   Мы помогаем артистам размещать музыку на Spotify, Apple Music, 
+                   VK Музыка, Яндекс.Музыка и других платформах.</p>
+                
+                <!-- Сетка со статистикой (3 карточки) -->
                 <div class="stats-grid">
+                    
+                    <!-- Карточка 1: Количество платформ -->
                     <div class="stat-item">
                         <h3>10+</h3>
                         <p>Платформ дистрибуции</p>
                     </div>
+                    
+                    <!-- Карточка 2: Количество слушателей -->
                     <div class="stat-item">
-                        <h3>M+</h3>
+                        <h3>1M+</h3>
                         <p>Активных слушателей</p>
                     </div>
+                    
+                    <!-- Карточка 3: Контроль контента -->
                     <div class="stat-item">
                         <h3>100%</h3>
-                        <p>Контроль над вашим контентом</p>
+                        <p>Контроль над контентом</p>
                     </div>
+                    
                 </div>
+                <!-- Конец сетки статистики -->
             </div>
         </section>
     </main>
+    <!-- ==================== КОНЕЦ ОСНОВНОГО СОДЕРЖИМОГО ==================== -->
 
+
+    <!-- ==================== ПОДВАЛ САЙТА ==================== -->
     <footer class="main-footer">
         <div class="container">
-            <p>© 2026 AlR1_Beats. Все права защищены. Создано с любовью для артистов.</p>
+            <p>© 2026 AlR1_Beats. Все права защищены.</p>
         </div>
     </footer>
+    <!-- ==================== КОНЕЦ ПОДВАЛА ==================== -->
 
     <script src="js/Site.js"></script>
+    
 </body>
 </html>

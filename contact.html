@@ -1,23 +1,33 @@
+<!-- 
+    ========================================================================
+    СТРАНИЦА "КОНТАКТЫ" сайта AlR1_Beats
+    Файл: contact.html
+    Назначение: Контактная информация компании
+    ========================================================================
+-->
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Контакты - AlR1_Beats</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/Site.css">
 </head>
+
 <body>
+
+    <!-- ==================== ШАПКА САЙТА ==================== -->
     <header class="main-header">
         <div class="container">
             <div class="logo">AlR1_Beats</div>
+            
             <div class="menu-toggle" id="mobile-menu">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
             </div>
+            
             <nav class="nav-menu" id="nav-menu">
                 <ul>
                     <li><a href="Site.html">Главная</a></li>
@@ -31,27 +41,51 @@
             </nav>
         </div>
     </header>
+    <!-- ==================== КОНЕЦ ШАПКИ ==================== -->
 
+
+    <!-- ==================== ОСНОВНОЕ СОДЕРЖИМОЕ ==================== -->
     <main>
-        <section id="contact" class="contact-section page-section">
+        <!-- Секция "Контакты" -->
+        <!-- Тёмно-синий фон, белый текст -->
+        <section class="contact-section">
             <div class="container">
                 <h2>Свяжитесь с Нами</h2>
+                
+                <!-- Призыв к обращению -->
                 <p>Есть вопросы или предложения? Мы всегда готовы помочь.</p>
+                
+                <!-- Семантический тег <address> для контактной информации -->
                 <address>
-                    <p>Email: <a href="mailto:akovs0647@gmail.com">alrbeats6@gmail.com</a></p>
-                    <p>Телефон: <a href="tel:+79083012278">+7 (908) 301-22-78</a></p>
+                    <!-- Email с ссылкой для открытия почтового клиента -->
+                    <!-- mailto: - протокол для email -->
+                    <p>Email: 
+                        <a href="mailto:alrbeats6@gmail.com">alrbeats6@gmail.com</a>
+                    </p>
+                    
+                    <!-- Телефон с ссылкой для звонка (на мобильных) -->
+                    <!-- tel: - протокол для телефона -->
+                    <p>Телефон: 
+                        <a href="tel:+79083012278">+7 (908) 301-22-78</a>
+                    </p>
                 </address>
-                <!-- Здесь можно добавить форму обратной связи -->
+                
+                <!-- Примечание: Здесь можно добавить форму обратной связи -->
             </div>
         </section>
     </main>
+    <!-- ==================== КОНЕЦ ОСНОВНОГО СОДЕРЖИМОГО ==================== -->
 
+
+    <!-- ==================== ПОДВАЛ САЙТА ==================== -->
     <footer class="main-footer">
         <div class="container">
-            <p>© 2026 AlR1_Beats. Все права защищены. Создано с любовью для артистов.</p>
+            <p>© 2026 AlR1_Beats. Все права защищены.</p>
         </div>
     </footer>
+    <!-- ==================== КОНЕЦ ПОДВАЛА ==================== -->
 
     <script src="js/Site.js"></script>
+    
 </body>
 </html>

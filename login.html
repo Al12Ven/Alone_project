@@ -1,23 +1,33 @@
+<!-- 
+    ========================================================================
+    СТРАНИЦА "ВХОД / РЕГИСТРАЦИЯ" сайта AlR1_Beats
+    Файл: login.html
+    Назначение: Формы входа и регистрации пользователя
+    ========================================================================
+-->
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Вход / Регистрация - AlR1_Beats</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/Site.css">
 </head>
+
 <body>
+
+    <!-- ==================== ШАПКА САЙТА ==================== -->
     <header class="main-header">
         <div class="container">
             <div class="logo">AlR1_Beats</div>
+            
             <div class="menu-toggle" id="mobile-menu">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
             </div>
+            
             <nav class="nav-menu" id="nav-menu">
                 <ul>
                     <li><a href="Site.html">Главная</a></li>
@@ -31,61 +41,114 @@
             </nav>
         </div>
     </header>
+    <!-- ==================== КОНЕЦ ШАПКИ ==================== -->
 
+
+    <!-- ==================== ОСНОВНОЕ СОДЕРЖИМОЕ ==================== -->
     <main>
-        <section id="login" class="login-section page-section">
+        <!-- Секция "Вход и Регистрация" -->
+        <section class="login-section">
             <div class="container">
                 <h2>Вход и Регистрация</h2>
+                
+                <!-- ============================================ -->
+                <!-- ФОРМА ВХОДА (для существующих пользователей) -->
+                <!-- ============================================ -->
                 <div class="form-wrapper">
                     <h3>Вход</h3>
+                    
+                    <!-- Форма отправляет данные на сервер -->
                     <form id="login-form">
+                        
+                        <!-- Поле: Email -->
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="Введите ваш email">
+                            <!-- type="email" - проверяет формат email -->
+                            <input type="email" id="email" name="email" 
+                                   placeholder="Введите ваш email">
                         </div>
+                        
+                        <!-- Поле: Пароль -->
                         <div class="form-group">
                             <label for="password">Пароль</label>
-                            <input type="password" id="password" name="password" placeholder="Введите ваш пароль">
+                            <!-- type="password" - скрывает вводимые символы -->
+                            <input type="password" id="password" name="password" 
+                                   placeholder="Введите ваш пароль">
                         </div>
+                        
+                        <!-- Кнопка отправки формы -->
                         <button type="submit" class="btn btn-primary">Войти</button>
+                        
                     </form>
+                    
+                    <!-- Ссылка на форму регистрации -->
                     <div class="signup-link">
                         <p>Нет аккаунта? <a href="#signup">Зарегистрироваться</a></p>
                     </div>
                 </div>
-                <!-- Здесь может быть форма регистрации, если нужно -->
+                <!-- ==================== КОНЕЦ ФОРМЫ ВХОДА ==================== -->
+
+
+                <!-- ================================================ -->
+                <!-- ФОРМА РЕГИСТРАЦИИ (для новых пользователей) -->
+                <!-- id="signup" - якорь для ссылки выше -->
+                <!-- ================================================ -->
                 <div class="form-wrapper" id="signup">
                     <h3>Регистрация</h3>
+                    
                     <form id="signup-form">
-                         <div class="form-group">
+                        
+                        <!-- Поле: Имя артиста -->
+                        <div class="form-group">
                             <label for="name">Имя артиста</label>
-                            <input type="text" id="name" name="name" placeholder="Введите имя вашего артистического проекта">
+                            <!-- type="text" - обычное текстовое поле -->
+                            <input type="text" id="name" name="name" 
+                                   placeholder="Введите имя артиста">
                         </div>
+                        
+                        <!-- Поле: Email -->
                         <div class="form-group">
                             <label for="email-signup">Email</label>
-                            <input type="email" id="email-signup" name="email-signup" placeholder="Введите ваш email">
+                            <input type="email" id="email-signup" name="email-signup" 
+                                   placeholder="Введите ваш email">
                         </div>
+                        
+                        <!-- Поле: Пароль -->
                         <div class="form-group">
                             <label for="password-signup">Пароль</label>
-                            <input type="password" id="password-signup" name="password-signup" placeholder="Создайте ваш пароль">
+                            <input type="password" id="password-signup" name="password-signup" 
+                                   placeholder="Создайте пароль">
                         </div>
-                         <div class="form-group">
+                        
+                        <!-- Поле: Подтверждение пароля -->
+                        <div class="form-group">
                             <label for="password-confirm">Подтверждение пароля</label>
-                            <input type="password" id="password-confirm" name="password-confirm" placeholder="Повторите ваш пароль">
+                            <input type="password" id="password-confirm" name="password-confirm" 
+                                   placeholder="Повторите пароль">
                         </div>
+                        
+                        <!-- Кнопка отправки формы -->
                         <button type="submit" class="btn btn-secondary">Зарегистрироваться</button>
+                        
                     </form>
                 </div>
+                <!-- ==================== КОНЕЦ ФОРМЫ РЕГИСТРАЦИИ ==================== -->
+                
             </div>
         </section>
     </main>
+    <!-- ==================== КОНЕЦ ОСНОВНОГО СОДЕРЖИМОГО ==================== -->
 
+
+    <!-- ==================== ПОДВАЛ САЙТА ==================== -->
     <footer class="main-footer">
         <div class="container">
-            <p>© 2026 AlR1_Beats. Все права защищены. Создано с любовью для артистов.</p>
+            <p>© 2026 AlR1_Beats. Все права защищены.</p>
         </div>
     </footer>
+    <!-- ==================== КОНЕЦ ПОДВАЛА ==================== -->
 
     <script src="js/Site.js"></script>
+    
 </body>
 </html>
