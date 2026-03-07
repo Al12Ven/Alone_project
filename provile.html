@@ -48,23 +48,108 @@
     <!-- ==================== ОСНОВНОЕ СОДЕРЖИМОЕ ==================== -->
     <main>
         <!-- Секция "Профиль артиста" -->
-        <!-- Фиолетовый фон, белый текст -->
         <section class="profile-section">
             <div class="container">
-                <h2>Ваш Артистический Профиль</h2>
-                
-                <!-- Приветствие -->
-                <p>Добро пожаловать в ваш личный кабинет!</p>
-                
-                <!-- Описание возможностей -->
-                <p>Управляйте портфолио, отслеживайте статистику, 
-                   взаимодействуйте с поклонниками и получайте выплаты.</p>
-                
-                <!-- Кнопка-ссылка на страницу входа -->
-                <!-- btn-primary = синяя кнопка -->
-                <a href="login.html" class="btn btn-primary">Перейти в личный кабинет</a>
-                
-                <!-- Примечание: Здесь будет реальный интерфейс личного кабинета -->
+                <h2>Личный кабинет артиста</h2>
+
+                <!-- Карточка профиля -->
+                <div class="profile-card">
+                    <!-- Аватар -->
+                    <div class="profile-avatar">
+                        <img src="img/1.jpg" atl="Аватар">
+                    </div>
+
+                    <!-- Информация о пользователе -->
+                    <div class="profile-info">
+                        <h3 id="artist-name">Артист</h3>
+                        <p class="profile-email" id="artist-email">artist@example.com</p>
+                        <p class="profile-status">Статус: <span class="status-active">Активен</span></p>
+                    </div>
+                </div>
+
+                <!-- Разделы личного кабинета -->
+                <div class="profile-tabs">
+                    <!-- Вкладки -->
+                    <div class="tabs-header">
+                        <button class="tab-btn active" data-tab="dashboard">📊 Обзор</button>
+                        <button class="tab-btn" data-tab="music">🎵 Моя музыка</button>
+                        <button class="tab-btn" data-tab="stats">📈 Статистика</button>
+                        <button class="tab-btn" data-tab="settings">⚙️ Настройки</button>
+                    </div>
+
+                    <!-- Содержимое вкладок -->
+                    <div class="tabs-content">
+                        <!-- Обзор -->
+                        <div class="tab-pane active" id="dashboard">
+                            <div class="stats-grid profile-stats">
+                                <div class="stat-item">
+                                    <h3 id="total-tracks">0</h3>
+                                    <p>Треков</p>
+                                </div>
+                                <div class="stat-item">
+                                    <h3 id="total-plays">0</h3>
+                                    <p>Прослушиваний</p>
+                                </div>
+                                <div class="stat-item">
+                                    <h3 id="total-fans">0</h3>
+                                    <p>Поклонников</p>
+                                </div>
+                                <div class="stat-item">
+                                    <h3 id="total-earnings">0 ₽</h3>
+                                    <p>Доход</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Моя музыка -->
+                        <div class="tab-pane" id="music">
+                            <h3>Мои треки</h3>
+                            <div class="music-list" id="music-list">
+                                <p class="empty-message">У вас пока нет треков. Добавьте первый!</p>
+                            </div>
+                            <button class="btn btn-primary" id="add-track-btn">+ Добавить трек</button>
+                        </div>
+
+                        <!-- Статистика -->
+                        <div class="tab-pane" id="stats">
+                            <h3>Статистика прослушиваний</h3>
+                            <div class="stats-chart">
+                                <div class="chart-bar" style="height: 60%;"><span>Пн</span></div>
+                                <div class="chart-bar" style="height: 80%;"><span>Вт</span></div>
+                                <div class="chart-bar" style="height: 45%;"><span>Ср</span></div>
+                                <div class="chart-bar" style="height: 90%;"><span>Чт</span></div>
+                                <div class="chart-bar" style="height: 70%;"><span>Пт</span></div>
+                                <div class="chart-bar" style="height: 100%;"><span>Сб</span></div>
+                                <div class="chart-bar" style="height: 55%;"><span>Вс</span></div>
+                            </div>
+                        </div>
+
+                        <!-- Настройки -->
+                        <div class="tab-pane" id="settings">
+                            <h3>Настройки профиля</h3>
+                            <form class="profile-form" id="settings-form">
+                                <div class="form-group">
+                                    <label for="name-input">Имя артиста</label>
+                                    <input type="text" id="name-input" placeholder="Введите имя">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email-input">Email</label>
+                                    <input type="email" id="email-input" placeholder="Введите email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="bio-input">О себе</label>
+                                    <textarea id="bio-input" rows="4" placeholder="Расскажите о себе"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Кнопка выхода -->
+                <div class="profile-actions">
+                    <a href="login.html" class="btn btn-secondary">Выйти</a>
+                </div>
             </div>
         </section>
     </main>
