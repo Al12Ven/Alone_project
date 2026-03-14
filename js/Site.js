@@ -141,7 +141,7 @@ if (tabButtons.length > 0) {
             button.classList.add('active');
 
             // Показываем соответствующее содержимое
-            const tabId = button.getAttribute('data-tab');
+            const tabId = button.getAttribute('tab');
             const activePane = document.getElementById(tabId);
             if (activePane) {
                 activePane.classList.add('active');
@@ -161,7 +161,7 @@ if (tabButtons.length > 0) {
 // Объект с данными артиста (имитация базы данных)
 const artistData = {
     name: 'AlR1_Beats',
-    email: 'artist@alr1beats.com',
+    email: 'alr1beats@gmail.com',
     bio: 'Музыкальный продюсер и битмейкер. Создаю хиты с 2020 года.',
     stats: {
         tracks: 12,
