@@ -346,3 +346,57 @@ if (settingsForm) {
 
    --------------------------------------------------------------------------
 */
+
+
+
+/* --------------------------------------------------------------------------
+   9. Отдел для базы данных
+   -------------------------------------------------------------------------- */
+
+
+
+   async function fetchData(name,email_signup,password_signup, password_confirm) {
+	let url = `http://localhost/serverAlone/?name=${name}&email_signup=${email_signup}&password_signup=${password_signup}&password_confirm=${password_confirm}&pass=${pass}`
+	let response = await fetch(url, {
+		method: 'GET',
+		headers: { Accept: 'application/json' },
+	})
+
+	//let param = await response.json()
+	//console.log(param)
+}
+
+function get_data_form() {
+	//const forms = document.querySelectorAll('#form_reg')
+	const btn_reg = document.querySelector('#btn_reg')
+	btn_reg.addEventListener('click', event => {
+		// валидация элементов
+
+		const exp = /[a-z]/ 
+		const name = document.querySelector('#name').value
+		const email_signup = document.querySelector('#email_signup').value
+		const password_signup = document.querySelector('#password_signup').value
+		const password_confirm = document.querySelector('#password_confirm').value
+
+
+		// d = { name: name }
+		if (exp.test(name) && exp.test(email_signup) && exp.test(password_signup) && exp.test(password_confirm)){
+			console.log('Истино')
+			//d_to_server = JSON.stringify(d)
+			//console.log(d_to_server)
+			fetchData(name, email_signup, password_signup, password_confirm)
+		} else {
+			console.log('Ложно')
+		}
+
+		event.preventDefault()
+	})
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+	get_data_form()
+})
+
+
+
+
