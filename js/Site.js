@@ -353,10 +353,8 @@ if (settingsForm) {
    9. Отдел для базы данных
    -------------------------------------------------------------------------- */
 
-
-
-   async function fetchData(name,email_signup,password_signup, password_confirm) {
-	let url = `http://localhost/serverAlone/?name=${name}&email_signup=${email_signup}&password_signup=${password_signup}&password_confirm=${password_confirm}&pass=${pass}`
+   async function fetchData(name, email_signup, password_signup, password_confirm) {
+	let url = `http://localhost/serverAlone/?name=${name}&email_signup=${email_signup}&password_signup=${password_signup}&password_confirm=${password_confirm}`
 	let response = await fetch(url, {
 		method: 'GET',
 		headers: { Accept: 'application/json' },
@@ -368,15 +366,15 @@ if (settingsForm) {
 
 function get_data_form() {
 	//const forms = document.querySelectorAll('#form_reg')
-	const btn_reg = document.querySelector('#btn_reg')
-	btn_reg.addEventListener('click', event => {
+	const signup_form = document.querySelector('#signup-form')
+	signup_form.addEventListener('submit', event => {
 		// валидация элементов
 
-		const exp = /[a-z]/ 
+		const exp = /[a-z]/
 		const name = document.querySelector('#name').value
-		const email_signup = document.querySelector('#email_signup').value
-		const password_signup = document.querySelector('#password_signup').value
-		const password_confirm = document.querySelector('#password_confirm').value
+		const email_signup = document.querySelector('#email-signup').value
+		const password_signup = document.querySelector('#password-signup').value
+		const password_confirm = document.querySelector('#password-confirm').value
 
 
 		// d = { name: name }
