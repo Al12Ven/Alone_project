@@ -84,6 +84,9 @@ document.addEventListener('click', function(e) {
 });
 
 
+
+
+
 /* --------------------------------------------------------------------------
    КАК ЭТО РАБОТАЕТ (ПОШАГОВО):
    --------------------------------------------------------------------------
@@ -394,6 +397,40 @@ function get_data_form() {
 document.addEventListener('DOMContentLoaded', function () {
 	get_data_form()
 })
+
+
+/* --------------------------------------------------------------------------
+   10. ОБРАБОТКА ФОРМЫ РЕГИСТРАЦИИ
+   -------------------------------------------------------------------------- */
+
+// Находим форму регистрации
+const signupForm = document.getElementById('signup-form');
+
+// Вешаем обработчик отправки формы
+signupForm.addEventListener('submit', function(e) {
+    e.preventDefault(); // Предотвращаем стандартную отправку формы
+    
+    // Собираем данные формы
+    const formData = new FormData(signupForm);
+    
+    // Отправляем данные на сервер
+    fetch('http://localhost/serverAlone/index.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            alert('Регистрация успешна!');
+        } else {
+            alert('Ошибка: ' + data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Ошибка:', error);
+        alert('Ошибка отправки данных');
+    });
+});
 
 
 
