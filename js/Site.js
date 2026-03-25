@@ -407,30 +407,390 @@ document.addEventListener('DOMContentLoaded', function () {
 const signupForm = document.getElementById('signup-form');
 
 // Вешаем обработчик отправки формы
-signupForm.addEventListener('submit', function(e) {
-    e.preventDefault(); // Предотвращаем стандартную отправку формы
-    
-    // Собираем данные формы
-    const formData = new FormData(signupForm);
-    
-    // Отправляем данные на сервер
-    fetch('http://localhost/serverAlone/index.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.status === 'success') {
-            alert('Регистрация успешна!');
-        } else {
-            alert('Ошибка: ' + data.message);
+if (signupForm) {
+    signupForm.addEventListener('submit', function(e) {
+        // Отменяем стандартную отправку формы
+        e.preventDefault();
+
+        // ==================== ШАГ 1: ПОЛУЧЕНИЕ ДАННЫХ ====================
+
+        // Получаем значения из полей формы
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email-signup').value.trim();
+        const password = document.getElementById('password-signup').value.trim();
+        const passwordConfirm = document.getElementById('password-confirm').value.trim();
+
+        // ==================== ШАГ 2: ВАЛИДАЦИЯ С REGEX ====================
+
+        // Проверяем имя с помощью регулярного выражения
+        if (!validateName(name)) {
+            alert('Ошибка: Имя должно содержать только буквы (2-50 символов)');
+            return;
         }
-    })
-    .catch(error => {
-        console.error('Ошибка:', error);
-        alert('Ошибка отправки данных');
+
+        // Проверяем email с помощью регулярного выражения
+        if (!validateEmail(email)) {
+            alert('Ошибка: Введите корректный email (например, name@example.com)');
+            return;
+        }
+
+        // Проверяем пароль с помощью регулярного выражения
+        if (!validatePassword(password)) {
+            alert('Ошибка: Пароль должен содержать минимум 6 символов, включая буквы и цифры');
+            return;
+        }
+
+        // Проверяем совпадение паролей
+        if (password !== passwordConfirm) {
+            alert('Ошибка: Пароли не совпадают');
+            return;
+        }
+
+        // ==================== ШАГ 3: ПОДГОТОВКА ДАННЫХ ====================
+
+        // Собираем данные формы
+        const formData = new FormData(signupForm);
+        formData.append('action', 'register'); // Добавляем действие
+
+        // ==================== ШАГ 4: ОТПРАВКА НА СЕРВЕР ====================
+
+        // Отправляем данные на сервер
+        fetch('http://localhost/serverAlone/index.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                alert('Регистрация успешна!');
+                signupForm.reset();
+            } else {
+                alert('Ошибка: ' + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Ошибка:', error);
+            alert('Ошибка отправки данных');
+        });
     });
-});
+}
+
+
+/* --------------------------------------------------------------------------
+   11. ОБРАБОТКА ФОРМЫ ОБРАТНОЙ СВЯЗИ (МОДАЛЬНОЕ ОКНО)
+   -------------------------------------------------------------------------- */
+
+// Находим форму обратной связи по её id="feedback-form"
+// document.getElementById - метод для поиска элемента по ID
+const feedbackForm = document.getElementById('feedback-form');
+
+// Проверяем, существует ли форма на странице
+// Это нужно, чтобы код не выдавал ошибку на других страницах сайта
+if (feedbackForm) {
+
+    // Вешаем обработчик события "отправка формы"
+    // submit - событие, которое срабатывает при нажатии кнопки отправки
+    feedbackForm.addEventListener('submit', function(e) {
+
+        // Отменяем стандартную отправку формы
+        // Без этой строки страница бы перезагрузилась
+        // preventDefault - метод для отмены стандартного действия
+        e.preventDefault();
+
+
+        // ==================== ШАГ 1: ПОЛУЧЕНИЕ ДАННЫХ ====================
+
+        // Получаем значение из поля "Ваше имя"
+        // .value - свойство, возвращающее значение поля ввода
+        // .trim() - метод, удаляющий пробелы в начале и в конце строки
+        const name = document.getElementById('feedback-name').value.trim();
+
+        // Получаем значение из поля "Email"
+        const email = document.getElementById('feedback-email').value.trim();
+
+        // Получаем значение из поля "Сообщение"
+        const message = document.getElementById('feedback-message').value.trim();
+
+
+        // ==================== ШАГ 2: ПРОВЕРКА ДАННЫХ ====================
+
+        // Проверяем: если хотя бы одно поле пустое
+        // ! - логическое "НЕ" (проверяет на пустоту)
+        // || - логическое "ИЛИ"
+        if (!name || !email || !message) {
+            // Показываем сообщение об ошибке
+            alert('Пожалуйста, заполните все поля!');
+            // Прерываем выполнение функции (данные не отправляются)
+            return;
+        }
+
+
+        // ==================== ШАГ 3: ПОДГОТОВКА ДАННЫХ ====================
+
+        // Создаём новый объект FormData для отправки данных
+        // FormData - встроенный объект браузера для формирования данных формы
+        const formData = new FormData();
+
+        // Добавляем в данные параметр "action" со значением "feedback"
+        // Это нужно серверу, чтобы понять: это форма обратной связи
+        // append - метод добавления данных в FormData
+        formData.append('action', 'feedback');
+
+        // Добавляем имя пользователя
+        formData.append('name', name);
+
+        // Добавляем email пользователя
+        formData.append('email', email);
+
+        // Добавляем сообщение пользователя
+        formData.append('message', message);
+
+
+        // ==================== ШАГ 4: ОТПРАВКА НА СЕРВЕР ====================
+
+        // fetch - функция для отправки HTTP-запросов (AJAX)
+        // Позволяет отправлять данные без перезагрузки страницы
+        fetch('http://localhost/serverAlone/index.php', {
+
+            // method: 'POST' - метод отправки данных (передача на сервер)
+            method: 'POST',
+
+            // body: formData - тело запроса (наши данные)
+            body: formData
+
+        })
+
+        // .then() - обработка ответа от сервера (цепочка промисов)
+        // response => response.json() - преобразуем ответ в формат JSON
+        .then(response => response.json())
+
+        // Второй .then() - работа с распарсенными данными
+        // data - объект, который вернул сервер
+        .then(data => {
+
+            // Проверяем статус ответа
+            // if - условная конструкция
+            if (data.status === 'success') {
+
+                // Если успешно - показываем сообщение
+                alert('Сообщение отправлено! Мы свяжемся с вами.');
+
+                // Очищаем форму (все поля становятся пустыми)
+                // reset - метод формы для сброса значений
+                feedbackForm.reset();
+
+                // ==================== ЗАКРЫТИЕ МОДАЛЬНОГО ОКНА ====================
+
+                // Находим элемент модального окна по ID
+                const modalElement = document.getElementById('feedbackModal');
+
+                // Получаем экземпляр Bootstrap Modal
+                // bootstrap.Modal.getInstance - метод Bootstrap для работы с модальными окнами
+                const modal = bootstrap.Modal.getInstance(modalElement);
+
+                // Если модальное окно существует - закрываем его
+                // if (modal) - проверка на существование
+                if (modal) {
+                    // hide() - метод для закрытия модального окна
+                    modal.hide();
+                }
+
+            } else {
+
+                // Если ошибка - показываем сообщение от сервера
+                alert('Ошибка: ' + data.message);
+
+            }
+        })
+
+        // .catch() - обработка ошибок (если сервер недоступен или ошибка сети)
+        // error - объект ошибки
+        .catch(error => {
+
+            // Выводим ошибку в консоль разработчика (F12 → Console)
+            console.error('Ошибка:', error);
+
+            // Показываем сообщение пользователю
+            alert('Ошибка отправки сообщения');
+        });
+
+    }); // Конец обработчика submit
+} // Конец проверки if (feedbackForm)
+
+
+/* --------------------------------------------------------------------------
+   12. ВАЛИДАЦИЯ С РЕГУЛЯРНЫМИ ВЫРАЖЕНИЯМИ
+   -------------------------------------------------------------------------- */
+
+// Регулярные выражения для валидации данных
+// test() - метод, проверяющий строку на соответствие шаблону
+
+// Валидация email: буквы/цифры, @, домен, точка, 2-4 буквы
+const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+// Валидация телефона: +7 или 8, затем 10 цифр (российский формат)
+const phoneRegex = /^(\+7|8)\s?\(?\d{3}\)?[\s-]?\d{3}[\s-]?\d{2}[\s-]?\d{2}$/;
+
+// Валидация имени: только буквы (кириллица/латиница), пробелы, дефисы, 2-50 символов
+const nameRegex = /^[a-zA-Zа-яА-ЯёЁ\s-]{2,50}$/;
+
+// Валидация пароля: минимум 6 символов, буквы и цифры
+const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+
+// Валидация ссылок на соцсети: начинается с http:// или https://
+const urlRegex = /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)$/;
+
+// Функция для валидации email
+function validateEmail(email) {
+    // Проверяем, соответствует ли email шаблону
+    return emailRegex.test(email);
+}
+
+// Функция для валидации телефона (необязательное поле)
+function validatePhone(phone) {
+    // Если поле пустое - валидно (т.к. необязательное)
+    if (phone.trim() === '') return true;
+    // Иначе проверяем по шаблону
+    return phoneRegex.test(phone);
+}
+
+// Функция для валидации имени
+function validateName(name) {
+    return nameRegex.test(name);
+}
+
+// Функция для валидации пароля
+function validatePassword(password) {
+    return passwordRegex.test(password);
+}
+
+
+/* --------------------------------------------------------------------------
+   13. ОБРАБОТКА ФОРМЫ ЗАЯВКИ (5 ТИПОВ ПОЛЕЙ)
+   -------------------------------------------------------------------------- */
+
+// Находим форму заявки
+const applicationForm = document.getElementById('application-form');
+
+// Вешаем обработчик отправки формы
+if (applicationForm) {
+    applicationForm.addEventListener('submit', function(e) {
+        // Отменяем стандартную отправку формы
+        e.preventDefault();
+
+        // ==================== ШАГ 1: ПОЛУЧЕНИЕ ДАННЫХ ====================
+
+        // Получаем значения из полей формы
+        const artistName = document.getElementById('artist-name').value.trim();
+        const email = document.getElementById('application-email').value.trim();
+        const phone = document.getElementById('application-phone').value.trim();
+        const genre = document.getElementById('application-genre').value;
+        const trackCount = document.getElementById('application-tracks').value;
+        
+        // Для радио-кнопок: находим выбранную
+        const experience = document.querySelector('input[name="experience"]:checked');
+        const experienceValue = experience ? experience.value : '';
+        
+        const socialLinks = document.getElementById('application-social').value.trim();
+        const agreeRules = document.getElementById('agree-rules').checked;
+        const agreeNewsletter = document.getElementById('agree-newsletter').checked;
+
+        // ==================== ШАГ 2: ВАЛИДАЦИЯ С REGEX ====================
+
+        // Проверяем имя артиста с помощью регулярного выражения
+        if (!validateName(artistName)) {
+            alert('Ошибка: Имя должно содержать только буквы (2-50 символов)');
+            return;
+        }
+
+        // Проверяем email с помощью регулярного выражения
+        if (!validateEmail(email)) {
+            alert('Ошибка: Введите корректный email (например, name@example.com)');
+            return;
+        }
+
+        // Проверяем телефон с помощью регулярного выражения
+        if (!validatePhone(phone)) {
+            alert('Ошибка: Введите корректный телефон (например, +7 (999) 999-99-99)');
+            return;
+        }
+
+        // Проверяем жанр
+        if (!genre) {
+            alert('Ошибка: Выберите жанр музыки');
+            return;
+        }
+
+        // Проверяем количество треков
+        const trackNum = parseInt(trackCount);
+        if (isNaN(trackNum) || trackNum < 1 || trackNum > 100) {
+            alert('Ошибка: Количество треков должно быть от 1 до 100');
+            return;
+        }
+
+        // Проверяем опыт
+        if (!experienceValue) {
+            alert('Ошибка: Выберите ваш опыт работы');
+            return;
+        }
+
+        // Проверяем согласие с правилами
+        if (!agreeRules) {
+            alert('Ошибка: Необходимо согласиться с правилами сервиса');
+            return;
+        }
+
+        // ==================== ШАГ 3: ПОДГОТОВКА ДАННЫХ ====================
+
+        // Создаём объект FormData для отправки
+        const formData = new FormData();
+        
+        // Добавляем параметр action для сервера
+        formData.append('action', 'application');
+        
+        // Добавляем все данные формы
+        formData.append('artist_name', artistName);
+        formData.append('email', email);
+        formData.append('phone', phone);
+        formData.append('genre', genre);
+        formData.append('track_count', trackNum);
+        formData.append('experience', experienceValue);
+        formData.append('social_links', socialLinks);
+        formData.append('agree_rules', agreeRules ? '1' : '0');
+        formData.append('agree_newsletter', agreeNewsletter ? '1' : '0');
+
+        // ==================== ШАГ 4: ОТПРАВКА НА СЕРВЕР ====================
+
+        // Отправляем данные на сервер через fetch (AJAX)
+        fetch('http://localhost/serverAlone/index.php', {
+            method: 'POST',
+            body: formData
+        })
+        // Преобразуем ответ сервера в JSON
+        .then(response => response.json())
+        // Обрабатываем данные от сервера
+        .then(data => {
+            if (data.status === 'success') {
+                // Если успешно - показываем сообщение
+                alert('Заявка отправлена! Мы свяжемся с вами в ближайшее время.');
+                
+                // Очищаем форму
+                applicationForm.reset();
+                
+                // Перенаправляем на главную
+                window.location.href = 'index.html';
+            } else {
+                // Если ошибка - показываем сообщение
+                alert('Ошибка: ' + data.message);
+            }
+        })
+        // Обрабатываем ошибки сети
+        .catch(error => {
+            console.error('Ошибка:', error);
+            alert('Ошибка отправки заявки. Проверьте подключение к интернету.');
+        });
+    });
+}
 
 
 
