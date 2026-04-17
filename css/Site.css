@@ -21,8 +21,9 @@
 body {
     font-family: Arial, sans-serif;  /* Шрифт без засечек */
     line-height: 1.6;    /* Межстрочный интервал (высота строки) */
-    background-color: #f5f5f5;  /* Светло-серый фон страницы */
-    color: #333;         /* Тёмно-серый цвет текста */
+    background: linear-gradient(135deg, #0f0a1e 0%, #1a1035 25%, #1e0f30 50%, #150d25 75%, #0d0818 100%);
+    background-attachment: fixed;  /* Фон фиксируется при прокрутке */
+    color: #e0e0e0;         /* Светло-серый цвет текста */
 }
 
 
@@ -45,7 +46,7 @@ body {
 /* Общие стили для всех заголовков */
 h1, h2, h3 {
     margin-bottom: 20px; /* Отступ снизу */
-    color: #1a1a2e;      /* Тёмно-синий цвет */
+    color: #e8e0f0;      /* Светло-лавандовый цвет */
 }
 
 /* Размер шрифта для заголовка 1 уровня (самый важный) */
@@ -249,39 +250,102 @@ section {
 
 /* Баннер на главной странице */
 .hero-section {
-    background-color: #4361ee;  /* Ярко-синий фон */
-    color: #fff;                /* Белый текст */
-    text-align: center;         /* Центрируем текст */
-    min-height: 80vh;           /* Минимальная высота - 80% экрана */
-    display: flex;              /* Flex-контейнер */
-    align-items: center;        /* Центрируем по вертикали */
-    justify-content: center;    /* Центрируем по горизонтали */
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0a0612 0%, #1a1035 50%, #0f0a1e 100%);
+    padding: 120px 0 80px;
+}
+
+/* Контейнер hero */
+.hero-section .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    max-width: 1200px;
+    width: 100%;
+}
+
+/* Контент hero */
+.hero-content {
+    flex: 1;
+    max-width: 600px;
 }
 
 /* Заголовок внутри hero-секции */
 .hero-content h1 {
-    color: #fff;                /* Белый цвет (переопределяем стандартный) */
+    color: #fff;
+    font-size: 56px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 24px;
+}
+
+/* Градиентный текст */
+.gradient-text {
+    background: linear-gradient(135deg, #7209b7 0%, #4361ee 50%, #4cc9f0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 /* Текст внутри hero-секции */
 .hero-content p {
-    font-size: 20px;            /* Увеличенный шрифт */
-    margin-bottom: 30px;        /* Отступ снизу */
+    font-size: 18px;
+    margin-bottom: 32px;
+    line-height: 1.7;
+    color: #c0b8d8;
+}
+
+/* Кнопки */
+.hero-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+/* Статистика */
+.hero-stats {
+    display: flex;
+    gap: 32px;
+}
+
+.hero-stat {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 32px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #4361ee 0%, #7209b7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 4px;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: #9088a8;
+    font-weight: 500;
 }
 
 /* Изображение в главном баннере */
 .hero-image {
-    margin-top: 40px;           /* Отступ сверху */
-    max-width: 500px;           /* Максимальная ширина */
-    margin-left: auto;          /* Центрирование по горизонтали */
-    margin-right: auto;
+    flex: 1;
+    max-width: 500px;
 }
 
 .hero-image img {
-    width: 100%;                /* Ширина на весь контейнер */
-    height: auto;               /* Высота автоматическая (сохраняет пропорции) */
-    border-radius: 15px;        /* Закруглённые углы */
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);  /* Тень */
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(114, 9, 183, 0.3);
 }
 
 
@@ -291,7 +355,8 @@ section {
 
 /* Фон секции */
 .about-section {
-    background-color: #fff;     /* Белый фон */
+    background: linear-gradient(180deg, rgba(26, 16, 53, 0.95) 0%, rgba(15, 10, 30, 0.98) 100%);
+    backdrop-filter: blur(2px);
 }
 
 /* Изображение в секции "О нас" */
@@ -305,6 +370,104 @@ section {
     height: auto;               /* Высота автоматическая (сохраняет пропорции) */
     border-radius: 15px;        /* Закруглённые углы */
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);  /* Тень */
+}
+
+/* --------------------------------------------------------------------------
+   СТИЛИ ДЛЯ СЛАЙДЕРА
+   -------------------------------------------------------------------------- */
+
+/* Контейнер слайдера */
+.slider-container {
+    position: relative;
+    max-width: 800px;
+    margin: 30px auto;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Слайдер */
+.slider {
+    position: relative;
+    width: 100%;
+    height: 450px;
+}
+
+/* Отдельный слайд */
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Кнопки навигации */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 10;
+}
+
+.slider-btn:hover {
+    background-color: rgba(67, 97, 238, 0.9);
+}
+
+.slider-btn.prev {
+    left: 15px;
+}
+
+.slider-btn.next {
+    right: 15px;
+}
+
+/* Точки (индикаторы) */
+.slider-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.dot:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.dot.active {
+    background-color: #4361ee;
+    transform: scale(1.2);
 }
 
 /* Сетка статистики */
@@ -336,55 +499,203 @@ section {
 
 /* Фон секции */
 .services-section {
-    background-color: #f0f0f5;  /* Светло-серый фон */
-    position: relative;         /* Для абсолютного позиционирования изображения */
+    background: linear-gradient(180deg, rgba(15, 10, 30, 0.97) 0%, rgba(20, 12, 38, 0.95) 100%);
+    backdrop-filter: blur(2px);
+    padding: 80px 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
 }
 
 /* Заголовок секции */
 .services-section h2 {
-    text-align: center;         /* Центрируем */
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 42px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #e8e0f0 0%, #7209b7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none;
 }
 
-/* Изображение в секции "Услуги" (в правом верхнем углу) */
-/* .services-image-corner { */
-    /* position: absolute;         Абсолютное позиционирование */
-    /* top: 100px;                 Отступ сверху */
-    /* right: 5%;                  Отступ справа */
-    /* width: 280px;               Ширина как у карточки */
-    /* z-index: 10;                Поверх других элементов */
-/* } */
+/* Обёртка слайдера */
+.services-slider {
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px 0 80px;
+}
 
-/* .services-image-corner img { */
-    /* width: 100%;                Ширина на весь контейнер */
-    /* height: 350px;              Высота */
-    /* object-fit: cover;          Заполнение без искажения */
-    /* border-radius: 10px;        Закруглённые углы */
-    /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);  Тень */
-/* } */
+/* Swiper */
+.services-swiper {
+    padding: 20px 10px 60px;
+    overflow: visible;
+}
 
-/* Сетка карточек услуг */
-.services-grid {
-    display: flex;              /* Flex-контейнер */
-    flex-wrap: wrap;            /* Перенос элементов */
-    justify-content: center;    /* Центрируем */
-    gap: 200px;                  /* Расстояние между карточками */
-    margin-top: 40px;           /* Отступ сверху */
+/* Отдельный слайд */
+.swiper-slide {
+    height: auto;
+    display: flex;
 }
 
 /* Карточка услуги */
-.swiper-slide {
-    background-color: #fff;     /* Белый фон */
-    padding: 30px;              /* Внутренние отступы */
-    border-radius: 10px;        /* Закруглённые углы */
-    text-align: center;         /* Центрируем текст */
-    flex: 1;                    /* Растягивание */
-    min-width: 850px;           /* Минимальная ширина */
-    max-width: 1100px;           /* Максимальная ширина */
+.service-card {
+    background: linear-gradient(135deg, rgba(30, 20, 50, 0.95) 0%, rgba(20, 12, 38, 0.98) 100%);
+    border: 1px solid rgba(114, 9, 183, 0.25);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.service-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 16px 48px rgba(114, 9, 183, 0.3);
+    border-color: rgba(114, 9, 183, 0.5);
+}
+
+/* Изображение в карточке */
+.service-card-image {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+}
+
+.service-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.service-card:hover .service-card-image img {
+    transform: scale(1.1);
+}
+
+/* Контент карточки */
+.service-card-content {
+    padding: 28px 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Иконка услуги */
+.service-icon {
+    font-size: 56px;
+    margin-bottom: 16px;
+    display: inline-block;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
 }
 
 /* Заголовок карточки */
-.swiper-slide h3 {
-    color: #7209b7;             /* Фиолетовый цвет */
+.service-card h3 {
+    color: #e8e0f0;
+    margin-bottom: 14px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+/* Описание карточки */
+.service-card p {
+    color: #c0b8d8;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex: 1;
+}
+
+/* Ссылка "Подробнее" */
+.service-link {
+    display: inline-block;
+    color: #7209b7;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 2px solid rgba(114, 9, 183, 0.4);
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    background: transparent;
+    margin-top: auto;
+}
+
+.service-link:hover {
+    background: #7209b7;
+    color: #fff;
+    border-color: #7209b7;
+    transform: translateX(5px);
+}
+
+/* Кнопки навигации */
+.services-slider .swiper-button-prev,
+.services-slider .swiper-button-next {
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, rgba(114, 9, 183, 0.8) 0%, rgba(67, 97, 238, 0.8) 100%);
+    border-radius: 50%;
+    box-shadow: 0 4px 20px rgba(114, 9, 183, 0.4);
+    transition: all 0.3s ease;
+}
+
+.services-slider .swiper-button-prev:hover,
+.services-slider .swiper-button-next:hover {
+    background: linear-gradient(135deg, rgba(114, 9, 183, 1) 0%, rgba(67, 97, 238, 1) 100%);
+    box-shadow: 0 6px 28px rgba(114, 9, 183, 0.6);
+    transform: scale(1.1);
+}
+
+.services-slider .swiper-button-prev::after,
+.services-slider .swiper-button-next::after {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.services-slider .swiper-button-prev {
+    left: 0;
+}
+
+.services-slider .swiper-button-next {
+    right: 0;
+}
+
+/* Пагинация */
+.services-slider .swiper-pagination {
+    bottom: 10px;
+}
+
+.services-slider .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    background: rgba(192, 184, 216, 0.5);
+    opacity: 1;
+    transition: all 0.3s ease;
+    margin: 0 6px;
+}
+
+.services-slider .swiper-pagination-bullet-active {
+    background: linear-gradient(135deg, #7209b7 0%, #4361ee 100%);
+    transform: scale(1.4);
+    box-shadow: 0 0 12px rgba(114, 9, 183, 0.6);
 }
 
 
@@ -395,15 +706,16 @@ section {
 /* Общие стили для секций выпуска и профиля */
 .release-section,
 .profile-section {
-    background-color: #7209b7;  /* Фиолетовый фон */
-    color: #fff;                /* Белый текст */
-    text-align: center;         /* Центрируем текст */
+    background: linear-gradient(180deg, rgba(26, 16, 53, 0.95) 0%, rgba(15, 10, 30, 0.98) 100%);
+    backdrop-filter: blur(2px);
+    color: #e0e0e0;
+    text-align: center;
 }
 
 /* Заголовки в этих секциях */
 .release-section h2,
 .profile-section h2 {
-    color: #fff;                /* Белый цвет (переопределяем) */
+    color: #e8e0f0;
 }
 
 /* Изображение в секции выпуска */
@@ -426,7 +738,8 @@ section {
 
 /* Фон секции */
 .login-section {
-    background-color: #fff;     /* Белый фон */
+    background: linear-gradient(180deg, rgba(20, 12, 38, 0.95) 0%, rgba(15, 10, 30, 0.97) 100%);
+    backdrop-filter: blur(2px);
 }
 
 /* Заголовок секции */
@@ -439,8 +752,10 @@ section {
     max-width: 500px;           /* Максимальная ширина */
     margin: 40px auto;          /* Центрируем: 40px сверху/снизу, авто по бокам */
     padding: 30px;              /* Внутренние отступы */
-    background-color: #f5f5f5;  /* Светло-серый фон */
-    border-radius: 10px;        /* Закруглённые углы */
+    background: rgba(30, 20, 50, 0.85);  /* Полупрозрачный тёмный фон */
+    border: 1px solid rgba(114, 9, 183, 0.3);
+    border-radius: 15px;        /* Закруглённые углы */
+    backdrop-filter: blur(10px);
 }
 
 /* Заголовок внутри формы */
@@ -459,21 +774,25 @@ section {
     display: block;             /* Блочный элемент (на отдельной строке) */
     margin-bottom: 8px;         /* Отступ снизу */
     font-weight: bold;          /* Жирный шрифт */
+    color: #c8b8e8;             /* Светло-фиолетовый */
 }
 
 /* Поле ввода */
 .form-group input {
     width: 100%;                /* Ширина на весь контейнер */
     padding: 12px;              /* Внутренние отступы */
-    border: 1px solid #ccc;     /* Рамка: 1px, сплошная, светло-серая */
-    border-radius: 5px;         /* Закруглённые углы */
+    border: 1px solid rgba(114, 9, 183, 0.4);  /* Фиолетовая рамка */
+    border-radius: 8px;         /* Закруглённые углы */
     font-size: 16px;            /* Размер шрифта */
+    background: rgba(20, 12, 38, 0.7);  /* Тёмный полупрозрачный фон */
+    color: #e0d8f0;             /* Светлый текст */
 }
 
 /* Поле в фокусе (когда кликнули) */
 .form-group input:focus {
     outline: none;              /* Убираем стандартную обводку */
-    border-color: #4361ee;      /* Синяя рамка */
+    border-color: #7209b7;      /* Фиолетовая рамка */
+    box-shadow: 0 0 10px rgba(114, 9, 183, 0.3);  /* Свечение */
 }
 
 /* Кнопка внутри формы */
@@ -565,9 +884,10 @@ address {
 
 /* Секция заявки */
 .application-section {
-    background-color: #f5f5f5;
+    background: linear-gradient(180deg, rgba(15, 10, 30, 0.97) 0%, rgba(20, 12, 38, 0.95) 100%);
     min-height: 100vh;
     padding: 80px 0;
+    backdrop-filter: blur(2px);
 }
 
 .application-section h2 {
@@ -577,7 +897,7 @@ address {
 
 .application-section > p {
     text-align: center;
-    color: #666;
+    color: #b0a8c8;
     margin-bottom: 30px;
 }
 
@@ -585,10 +905,11 @@ address {
 .application-form-wrapper {
     max-width: 600px;
     margin: 0 auto;
-    background-color: #fff;
+    background: rgba(30, 20, 50, 0.85);
+    border: 1px solid rgba(114, 9, 183, 0.3);
     padding: 40px;
     border-radius: 15px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
 }
 
 /* Группа радио-кнопок */
@@ -632,34 +953,40 @@ address {
 .form-group select {
     width: 100%;
     padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 1px solid rgba(114, 9, 183, 0.4);
+    border-radius: 8px;
     font-size: 16px;
-    background-color: #fff;
+    background: rgba(20, 12, 38, 0.7);
+    color: #e0d8f0;
     cursor: pointer;
 }
 
 .form-group select:focus {
     outline: none;
-    border-color: #4361ee;
+    border-color: #7209b7;
+    box-shadow: 0 0 10px rgba(114, 9, 183, 0.3);
 }
 
 /* Стили для number */
 .form-group input[type="number"] {
     width: 100%;
     padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 1px solid rgba(114, 9, 183, 0.4);
+    border-radius: 8px;
     font-size: 16px;
+    background: rgba(20, 12, 38, 0.7);
+    color: #e0d8f0;
 }
 
 /* Стили для tel */
 .form-group input[type="tel"] {
     width: 100%;
     padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 1px solid rgba(114, 9, 183, 0.4);
+    border-radius: 8px;
     font-size: 16px;
+    background: rgba(20, 12, 38, 0.7);
+    color: #e0d8f0;
 }
 
 /* Большая кнопка */
@@ -679,11 +1006,12 @@ address {
     display: flex;
     align-items: center;
     gap: 30px;
-    background-color: #fff;
+    background: rgba(30, 20, 50, 0.85);
+    border: 1px solid rgba(114, 9, 183, 0.3);
     padding: 30px;
     border-radius: 15px;
     margin-bottom: 30px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
 }
 
 /* Аватар */
@@ -703,17 +1031,17 @@ address {
 .profile-info h3 {
     font-size: 28px;
     margin-bottom: 10px;
-    color: #1a1a2e;
+    color: #e8e0f0;
 }
 
 .profile-email {
-    color: #666;
+    color: #b0a8c8;
     margin-bottom: 10px;
 }
 
 .profile-status {
     font-size: 14px;
-    color: #888;
+    color: #9088a8;
 }
 
 .status-active {
@@ -723,18 +1051,19 @@ address {
 
 /* Вкладки */
 .profile-tabs {
-    background-color: #fff;
+    background: rgba(30, 20, 50, 0.85);
+    border: 1px solid rgba(114, 9, 183, 0.3);
     border-radius: 15px;
     padding: 20px;
     margin-bottom: 30px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
 }
 
 /* Заголовок вкладок */
 .tabs-header {
     display: flex;
     gap: 10px;
-    border-bottom: 2px solid #f0f0f5;
+    border-bottom: 2px solid rgba(114, 9, 183, 0.2);
     padding-bottom: 15px;
     margin-bottom: 20px;
     flex-wrap: wrap;
@@ -748,14 +1077,14 @@ address {
     cursor: pointer;
     font-size: 16px;
     font-weight: bold;
-    color: #666;
+    color: #b0a8c8;
     border-radius: 8px;
     transition: 0.3s;
 }
 
 .tab-btn:hover {
-    background-color: #f0f0f5;
-    color: #4361ee;
+    background-color: rgba(114, 9, 183, 0.15);
+    color: #c8b8e8;
 }
 
 .tab-btn.active {
@@ -784,7 +1113,8 @@ address {
 }
 
 .profile-stats .stat-item {
-    background-color: #f5f5f5;
+    background: rgba(20, 12, 38, 0.7);
+    border: 1px solid rgba(114, 9, 183, 0.2);
     padding: 20px;
     border-radius: 10px;
     min-width: 150px;
@@ -798,7 +1128,7 @@ address {
 
 .profile-stats .stat-item p {
     font-size: 14px;
-    color: #666;
+    color: #b0a8c8;
 }
 
 /* Список музыки */
@@ -811,7 +1141,8 @@ address {
     align-items: center;
     justify-content: space-between;
     padding: 15px;
-    background-color: #f5f5f5;
+    background: rgba(20, 12, 38, 0.7);
+    border: 1px solid rgba(114, 9, 183, 0.15);
     border-radius: 10px;
     margin-bottom: 10px;
 }
@@ -835,17 +1166,17 @@ address {
 
 .track-title {
     font-weight: bold;
-    color: #1a1a2e;
+    color: #e8e0f0;
 }
 
 .track-plays {
-    color: #666;
+    color: #b0a8c8;
     font-size: 14px;
 }
 
 .empty-message {
     text-align: center;
-    color: #888;
+    color: #9088a8;
     padding: 30px;
 }
 
@@ -856,7 +1187,8 @@ address {
     justify-content: space-around;
     height: 200px;
     padding: 20px;
-    background-color: #f5f5f5;
+    background: rgba(20, 12, 38, 0.7);
+    border: 1px solid rgba(114, 9, 183, 0.2);
     border-radius: 10px;
     margin-top: 20px;
 }
@@ -879,7 +1211,7 @@ address {
     left: 50%;
     transform: translateX(-50%);
     font-size: 12px;
-    color: #666;
+    color: #b0a8c8;
 }
 
 /* Форма настроек */
@@ -916,7 +1248,7 @@ address {
    19. АДАПТИВНОСТЬ (МЕДИА-ЗАПРОСЫ ДЛЯ МОБИЛЬНЫХ)
    -------------------------------------------------------------------------- */
 
-/* Для экранов шириной 768px и меньше (планшеты) */
+/* Для экранов шириой 768px и меньше (планшеты) */
 @media (max-width: 768px) {
 
     /* Уменьшаем заголовки */
@@ -924,8 +1256,31 @@ address {
     h2 { font-size: 28px; }
 
     /* Уменьшаем заголовок hero-секции */
-    .hero-content h1 { font-size: 32px; }
-    .hero-content p { font-size: 18px; }
+    .hero-content h1 { font-size: 42px; }
+    .hero-content p { font-size: 16px; }
+
+    /* Hero-секция в колонку */
+    .hero-section .container {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .hero-content {
+        max-width: 100%;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-stats {
+        justify-content: center;
+    }
+
+    .hero-image {
+        max-width: 400px;
+    }
 
     /* Уменьшаем шрифт в меню */
     .nav-menu a { font-size: 20px; }
@@ -933,6 +1288,76 @@ address {
     /* Уменьшаем отступы */
     main { padding-top: 70px; }
     section { padding: 40px 0; }
+
+    .hero-section {
+        padding: 100px 0 60px;
+        min-height: auto;
+    }
+
+    /* Адаптивность секции услуг */
+    .services-section {
+        padding: 60px 0;
+        min-height: auto;
+    }
+
+    .services-section h2 {
+        font-size: 32px;
+        margin-bottom: 35px;
+    }
+
+    .services-slider {
+        padding: 10px 0 60px;
+    }
+
+    .services-swiper {
+        padding: 10px 5px 50px;
+    }
+
+    .service-card-image {
+        height: 180px;
+    }
+
+    .service-icon {
+        font-size: 48px;
+    }
+
+    .service-card h3 {
+        font-size: 1.25rem;
+    }
+
+    .service-card p {
+        font-size: 0.95rem;
+    }
+
+    .services-slider .swiper-button-prev,
+    .services-slider .swiper-button-next {
+        width: 44px;
+        height: 44px;
+    }
+
+    .services-slider .swiper-button-prev::after,
+    .services-slider .swiper-button-next::after {
+        font-size: 18px;
+    }
+
+    /* Адаптивность слайдера */
+    .slider {
+        height: 300px;
+    }
+
+    .slider-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+
+    .slider-btn.prev {
+        left: 10px;
+    }
+
+    .slider-btn.next {
+        right: 10px;
+    }
 
     /* Адаптивность профиля */
     .profile-card {
@@ -971,9 +1396,124 @@ address {
         padding: 30px 0;
     }
 
+    /* Hero-секция для телефонов */
+    .hero-section {
+        padding: 90px 0 50px;
+    }
+
+    .hero-content h1 {
+        font-size: 32px;
+    }
+
+    .hero-content p {
+        font-size: 15px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero-stats {
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .stat-number {
+        font-size: 24px;
+    }
+
+    .stat-label {
+        font-size: 12px;
+    }
+
+    .hero-image {
+        max-width: 300px;
+    }
+
+    /* Адаптивность секции услуг для телефонов */
+    .services-section {
+        padding: 40px 0;
+    }
+
+    .services-section h2 {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+
+    .services-slider {
+        padding: 0 0 50px;
+    }
+
+    .services-swiper {
+        padding: 5px 0 45px;
+    }
+
+    .service-card {
+        border-radius: 16px;
+    }
+
+    .service-card-image {
+        height: 160px;
+    }
+
+    .service-card-content {
+        padding: 20px 18px;
+    }
+
+    .service-icon {
+        font-size: 42px;
+        margin-bottom: 12px;
+    }
+
+    .service-card h3 {
+        font-size: 1.15rem;
+        margin-bottom: 10px;
+    }
+
+    .service-card p {
+        font-size: 0.9rem;
+        margin-bottom: 16px;
+    }
+
+    .service-link {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+
+    .services-slider .swiper-button-prev,
+    .services-slider .swiper-button-next {
+        width: 40px;
+        height: 40px;
+    }
+
+    .services-slider .swiper-button-prev::after,
+    .services-slider .swiper-button-next::after {
+        font-size: 16px;
+    }
+
+    .services-slider .swiper-pagination-bullet {
+        width: 10px;
+        height: 10px;
+        margin: 0 5px;
+    }
+
+    /* Адаптивность слайдера для телефонов */
+    .slider {
+        height: 200px;
+    }
+
+    .slider-container {
+        margin: 20px auto;
+    }
+
     /* Элементы в колонку */
     .stats-grid,
-    .services-grid,
     .profile-stats {
         flex-direction: column;   /* Вертикальное расположение */
         align-items: center;      /* Центрируем */
@@ -1005,10 +1545,278 @@ address {
 }
 
 /* --------------------------------------------------------------------------
-   20. Слайдер
+   20. ЗАЯВКИ В ПРОФИЛЕ
    -------------------------------------------------------------------------- */
-.swiper{
-  width: 100%;
-  height: 100vh;
-  position: relative;
+
+/* Список заявок в профиле */
+.profile-applications-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+/* Карточка заявки в профиле */
+.profile-application-card {
+    background: linear-gradient(135deg, rgba(30, 20, 50, 0.95) 0%, rgba(20, 12, 38, 0.98) 100%);
+    border: 1px solid rgba(114, 9, 183, 0.25);
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.profile-application-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(114, 9, 183, 0.3);
+    border-color: rgba(114, 9, 183, 0.5);
+}
+
+/* Заголовок карточки заявки */
+.app-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(114, 9, 183, 0.2);
+}
+
+.app-artist-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #e8e0f0;
+    margin: 0;
+}
+
+.app-date {
+    font-size: 0.85rem;
+    color: #9088a8;
+    white-space: nowrap;
+}
+
+/* Тело карточки заявки */
+.app-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.app-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.app-label {
+    font-size: 0.95rem;
+    min-width: 120px;
+    color: #b0a8c8;
+}
+
+.app-value {
+    font-size: 0.95rem;
+    color: #e0d8f0;
+    font-weight: 500;
+}
+
+/* Подвал карточки заявки */
+.app-card-footer {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(114, 9, 183, 0.15);
+}
+
+.app-status {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.app-status-pending {
+    background: rgba(255, 193, 7, 0.15);
+    color: #ffc107;
+    border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+.app-status-approved {
+    background: rgba(6, 214, 160, 0.15);
+    color: #06d6a0;
+    border: 1px solid rgba(6, 214, 160, 0.3);
+}
+
+.app-status-rejected {
+    background: rgba(255, 107, 107, 0.15);
+    color: #ff6b6b;
+    border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+/* --------------------------------------------------------------------------
+   20.1. Стили для заявок (новые, используются в loadProfileApplications)
+   -------------------------------------------------------------------------- */
+
+/* Контейнер списка заявок */
+.profile-applications-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+/* Карточка заявки (новая) */
+.application-card {
+    background: linear-gradient(135deg, rgba(30, 20, 50, 0.95) 0%, rgba(20, 12, 38, 0.98) 100%);
+    border: 1px solid rgba(114, 9, 183, 0.25);
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.application-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(114, 9, 183, 0.3);
+    border-color: rgba(114, 9, 183, 0.5);
+}
+
+/* Заголовок карточки */
+.application-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(114, 9, 183, 0.2);
+}
+
+.application-nickname {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #e8e0f0;
+    margin: 0;
+}
+
+/* Статус заявки */
+.application-status {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.application-status.status-pending {
+    background: rgba(255, 193, 7, 0.15);
+    color: #ffc107;
+    border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+.application-status.status-approved {
+    background: rgba(6, 214, 160, 0.15);
+    color: #06d6a0;
+    border: 1px solid rgba(6, 214, 160, 0.3);
+}
+
+.application-status.status-rejected {
+    background: rgba(255, 107, 107, 0.15);
+    color: #ff6b6b;
+    border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+.application-status.status-released {
+    background: rgba(67, 97, 238, 0.15);
+    color: #4361ee;
+    border: 1px solid rgba(67, 97, 238, 0.3);
+}
+
+/* Детали заявки */
+.application-details p {
+    margin: 0;
+    color: #c0b8d8;
+    font-size: 0.95rem;
+}
+
+.application-details strong {
+    color: #e8e0f0;
+}
+
+/* Сообщения загрузки и ошибок */
+.loading-message,
+.error-message,
+.empty-message {
+    text-align: center;
+    padding: 20px;
+    color: #b0a8c8;
+    font-size: 1rem;
+}
+
+.error-message {
+    color: #ff6b6b;
+}
+
+/* --------------------------------------------------------------------------
+   21. Слайдер (общие стили, если нужны)
+   -------------------------------------------------------------------------- */
+
+/* --------------------------------------------------------------------------
+   22. МОДАЛЬНОЕ ОКНО (цвета сайта)
+   -------------------------------------------------------------------------- */
+
+.modal-backdrop.show {
+    background-color: rgba(15, 10, 30, 0.85);
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #1a1035 0%, #0f0a1e 100%);
+    border: 1px solid rgba(114, 9, 183, 0.4);
+    color: #e0e0e0;
+}
+
+.modal-header {
+    background: linear-gradient(135deg, #7209b7 0%, #4361ee 100%);
+    border-bottom: 1px solid rgba(114, 9, 183, 0.3);
+    color: #ffffff;
+}
+
+.modal-header .btn-close {
+    filter: invert(1) brightness(2);
+}
+
+.modal-title {
+    color: #ffffff !important;
+}
+
+.modal-body {
+    background: #150d25;
+}
+
+.modal-body .form-label {
+    color: #e8e0f0;
+}
+
+.modal-body .form-control {
+    background-color: #1a1a2e;
+    border: 1px solid rgba(114, 9, 183, 0.3);
+    color: #e0e0e0;
+}
+
+.modal-body .form-control::placeholder {
+    color: #8a7fa8;
+}
+
+.modal-body .form-control:focus {
+    border-color: #7209b7;
+    box-shadow: 0 0 0 0.2rem rgba(114, 9, 183, 0.25);
+    background-color: #1e1540;
+}
+
+.modal-body .btn-primary {
+    background: linear-gradient(135deg, #7209b7, #4361ee);
+    border: none;
+}
+
+.modal-body .btn-primary:hover {
+    background: linear-gradient(135deg, #560bad, #3a0ca3);
 }

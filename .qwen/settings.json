@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//opt/lampp/htdocs/serverAlone/**)",
+      "Bash(mysql *)",
+      "Bash(/opt/lampp/bin/mysql *)",
+      "Bash(curl *)",
+      "WebFetch(localhost)",
+      "Bash(wget *)",
+      "Bash(find *)"
+    ]
+  },
+  "$version": 3
+}

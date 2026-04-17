@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6a1b9a;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#4a148c;stop-opacity:1"/>
+    </linearGradient>
+  </defs>
+  <rect fill="url(#bg)" width="800" height="500"/>
+  <!-- Vinyl record -->
+  <circle cx="250" cy="250" r="150" fill="#1a1a2e"/>
+  <circle cx="250" cy="250" r="100" fill="#16213e"/>
+  <circle cx="250" cy="250" r="60" fill="#0f3460"/>
+  <circle cx="250" cy="250" r="25" fill="#e94560"/>
+  <circle cx="250" cy="250" r="8" fill="#1a1a2e"/>
+  <!-- Groove lines -->
+  <circle cx="250" cy="250" r="40" fill="none" stroke="#533483" stroke-width="1" opacity="0.5"/>
+  <circle cx="250" cy="250" r="55" fill="none" stroke="#533483" stroke-width="1" opacity="0.4"/>
+  <circle cx="250" cy="250" r="70" fill="none" stroke="#533483" stroke-width="1" opacity="0.3"/>
+  <circle cx="250" cy="250" r="85" fill="none" stroke="#533483" stroke-width="1" opacity="0.2"/>
+  <!-- Headphones -->
+  <path d="M530 180 Q530 120 600 120 Q670 120 670 180" fill="none" stroke="#e94560" stroke-width="12" stroke-linecap="round"/>
+  <ellipse cx="520" cy="210" rx="35" ry="50" fill="#e94560"/>
+  <ellipse cx="680" cy="210" rx="35" ry="50" fill="#e94560"/>
+  <ellipse cx="520" cy="210" rx="20" ry="35" fill="#1a1a2e"/>
+  <ellipse cx="680" cy="210" rx="20" ry="35" fill="#1a1a2e"/>
+  <!-- Sound waves -->
+  <path d="M720 190 Q740 210 720 230" fill="none" stroke="#fff" stroke-width="3" opacity="0.6"/>
+  <path d="M740 175 Q770 210 740 245" fill="none" stroke="#fff" stroke-width="3" opacity="0.4"/>
+  <path d="M760 160 Q800 210 760 260" fill="none" stroke="#fff" stroke-width="3" opacity="0.2"/>
+  <!-- Text -->
+  <text x="400" y="440" font-family="Arial" font-size="36" font-weight="bold" fill="#ffffff" text-anchor="middle" letter-spacing="3">ВЫПУСК МУЗЫКИ</text>
+  <!-- Stars -->
+  <circle cx="100" cy="80" r="3" fill="#fff" opacity="0.7"/>
+  <circle cx="700" cy="60" r="2" fill="#fff" opacity="0.5"/>
+  <circle cx="350" cy="40" r="2.5" fill="#fff" opacity="0.6"/>
+  <circle cx="500" cy="450" r="2" fill="#fff" opacity="0.4"/>
+  <circle cx="150" cy="420" r="3" fill="#fff" opacity="0.3"/>
+</svg>

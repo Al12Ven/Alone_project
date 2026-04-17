@@ -73,7 +73,8 @@
                     <!-- Вкладки -->
                     <div class="tabs-header">
                         <button class="tab-btn active" tab="dashboard">📊 Обзор</button>
-                        <button class="tab-btn" tab="music">🎵 Моя музыка</button>
+                        <button class="tab-btn" tab="music">🎵 Музыка</button>
+                        <button class="tab-btn" tab="applications">📋 Заявки</button>
                         <button class="tab-btn" tab="stats">📈 Статистика</button>
                         <button class="tab-btn" tab="settings">⚙️ Настройки</button>
                     </div>
@@ -84,31 +85,41 @@
                         <div class="tab-pane active" id="dashboard">
                             <div class="stats-grid profile-stats">
                                 <div class="stat-item">
-                                    <h3 id="total-tracks">0</h3>
+                                    <h3 id="total-tracks">22000</h3>
                                     <p>Треков</p>
                                 </div>
                                 <div class="stat-item">
-                                    <h3 id="total-plays">0</h3>
+                                    <h3 id="total-plays">120000000</h3>
                                     <p>Прослушиваний</p>
                                 </div>
                                 <div class="stat-item">
-                                    <h3 id="total-fans">0</h3>
+                                    <h3 id="total-fans">1000000</h3>
                                     <p>Поклонников</p>
                                 </div>
                                 <div class="stat-item">
-                                    <h3 id="total-earnings">0 ₽</h3>
+                                    <h3 id="total-earnings">1000000000 ₽</h3>
                                     <p>Доход</p>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Моя музыка -->
+                        <!-- Музыка -->
                         <div class="tab-pane" id="music">
-                            <h3>Мои треки</h3>
+                            <h3>Треки</h3>
                             <div class="music-list" id="music-list">
                                 <p class="empty-message">У вас пока нет треков. Добавьте первый!</p>
                             </div>
                             <button class="btn btn-primary" id="add-track-btn">+ Добавить трек</button>
+                        </div>
+
+                        <!-- Заявки -->
+                        <div class="tab-pane" id="applications">
+                            <h3>Заявки на выпуск</h3>
+                            <div id="profile-applications-container" class="profile-applications-list">
+                                <div class="loading-message" id="loading-profile-applications">
+                                    <p>Загрузка заявок...</p>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Статистика -->

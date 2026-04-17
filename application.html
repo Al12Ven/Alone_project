@@ -60,8 +60,8 @@
 
                         <!-- 1. TEXT - Имя артиста -->
                         <div class="form-group">
-                            <label for="artist-name">Имя артиста *</label>
-                            <input type="text" id="artist-name" name="artist_name"
+                            <label for="artist-name-app">Имя артиста *</label>
+                            <input type="text" id="artist-name-app" name="artist_name"
                                    placeholder="Введите ваше сценическое имя" required>
                         </div>
 
@@ -76,7 +76,7 @@
                         <div class="form-group">
                             <label for="application-phone">Телефон</label>
                             <input type="tel" id="application-phone" name="phone"
-                                   placeholder="+7 (999) 999-99-99">
+                                   placeholder="89991112233 ">
                         </div>
 
                         <!-- 4. SELECT - Выбор жанра -->
@@ -101,7 +101,14 @@
                                    min="1" max="100" placeholder="Например: 5" required>
                         </div>
 
-                        <!-- 6. RADIO - Опыт работы -->
+                        <!-- 6. TEXT - Название музыки -->
+                        <div class="form-group">
+                            <label for="track">Название музыки *</label>
+                            <input type="text" id="track" name="track_name"
+                                   placeholder="Введите ваш никнейм и название песен" required>
+                        </div>
+
+                        <!-- 7. RADIO - Опыт работы -->
                         <div class="form-group">
                             <label>Ваш опыт работы *</label>
                             <div class="radio-group">
@@ -120,20 +127,20 @@
                             </div>
                         </div>
 
-                        <!-- 7. TEXTAREA - Ссылки на соцсети -->
+                        <!-- 8. TEXTAREA - Ссылки на соцсети -->
                         <div class="form-group">
                             <label for="application-social">Ссылки на соцсети</label>
                             <textarea id="application-social" name="social_links" rows="3"
                                       placeholder="VK, Telegram, YouTube и т.д."></textarea>
                         </div>
 
-                        <!-- 8. CHECKBOX - Согласие с правилами -->
+                        <!-- 9. CHECKBOX - Согласие с правилами -->
                         <div class="form-group checkbox-group">
                             <input type="checkbox" id="agree-rules" name="agree_rules" required>
                             <label for="agree-rules">Я согласен с правилами сервиса *</label>
                         </div>
 
-                        <!-- 9. CHECKBOX - Подписка на рассылку -->
+                        <!-- 10. CHECKBOX - Подписка на рассылку -->
                         <div class="form-group checkbox-group">
                             <input type="checkbox" id="agree-newsletter" name="agree_newsletter">
                             <label for="agree-newsletter">Хочу получать новости и обновления</label>

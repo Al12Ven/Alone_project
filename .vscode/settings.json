@@ -44,7 +44,7 @@
 	"window.density.editorTabHeight": "compact",
 	"editor.accessibilitySupport": "off",
 	"symbols.hidesExplorerArrows": false,
-	"workbench.iconTheme": "quill-icons",
+	"workbench.iconTheme": "material-icon-theme",
 	"workbench.colorTheme":"Darcula",
 	"workbench.activityBar.location": "hidden",
 	"workbench.layoutControl.enabled": false,

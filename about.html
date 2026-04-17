@@ -55,9 +55,30 @@
                 <!-- Заголовок 2 уровня -->
                 <h2>Кто Мы?</h2>
 
-                <!-- Изображение -->
-                <div class="about-image">
-                    <img src="img/3.jpg" alt="О компании AlR1_Beats">
+                <!-- Слайдер с изображениями -->
+                <div class="slider-container">
+                    <div class="slider">
+                        <div class="slide active">
+                            <img src="img/3.jpg" alt="О компании AlR1_Beats - 1">
+                        </div>
+                        <div class="slide">
+                            <img src="img/1.jpg" alt="О компании AlR1_Beats - 2">
+                        </div>
+                        <div class="slide">
+                            <img src="img/4.jpg" alt="О компании AlR1_Beats - 3">
+                        </div>
+                    </div>
+                    
+                    <!-- Кнопки навигации -->
+                    <button class="slider-btn prev" id="sliderPrev">&#10094;</button>
+                    <button class="slider-btn next" id="sliderNext">&#10095;</button>
+                    
+                    <!-- Точки (индикаторы) -->
+                    <div class="slider-dots" id="sliderDots">
+                        <span class="dot active" data-slide="0"></span>
+                        <span class="dot" data-slide="1"></span>
+                        <span class="dot" data-slide="2"></span>
+                    </div>
                 </div>
 
                 <!-- Описание компании -->
